@@ -1,3 +1,9 @@
+GIT
+  remote: https://gist.github.com/4577106.git
+  revision: bf97338a553662f155c81cfcecf25b34c88bcccc
+  specs:
+    generate-tumblr-oauth-token (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -6,8 +12,12 @@ GEM
       multipart-post (~> 1.2.0)
     faraday_middleware (0.9.1)
       faraday (>= 0.7.4, < 0.10)
+    http (0.6.0)
+      http_parser.rb (~> 0.6.0)
+    http_parser.rb (0.6.0)
     json (1.8.1)
     mime-types (2.2)
+    multi_json (1.10.0)
     multipart-post (1.2.0)
     oauth (0.4.7)
     simple_oauth (0.2.0)
@@ -18,6 +28,10 @@ GEM
       mime-types
       oauth
       simple_oauth
+    twitter (4.8.1)
+      faraday (~> 0.8, < 0.10)
+      multi_json (~> 1.0)
+      simple_oauth (~> 0.2)
 
 PLATFORMS
   ruby
@@ -25,4 +39,8 @@ PLATFORMS
 DEPENDENCIES
   dotenv
   faraday (< 0.9.0)
+  generate-tumblr-oauth-token!
+  http
+  oauth
   tumblr_client
+  twitter
