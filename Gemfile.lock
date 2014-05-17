@@ -14,6 +14,8 @@ GEM
     multi_json (1.10.0)
     multipart-post (1.2.0)
     oauth (0.4.7)
+    puma (2.8.2)
+      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
@@ -42,6 +44,7 @@ DEPENDENCIES
   dotenv
   faraday (< 0.9.0)
   http
+  puma
   sinatra
   tumblr_client
   twitter
