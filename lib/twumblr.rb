@@ -38,17 +38,24 @@ class Twumblr
     tweet_url = "http://twitter.com/#{tweet.from_user}/status/#{tweet.id}"
     tweet_text = tweet.text.gsub(%r| http\://\S*|, '')
     attribution = %|<a href="#{tweet_url}">@#{tweet.from_user}</a>|
-    if tweet.media.empty? # quote
-      puts tweet_text
-      puts "-- #{attribution}"
-      #tumblr.quote(ENV["TUMBLR_BLOG_URL"], :quote => tweet_text, :source => attribution)
-    else # picture
+    if tweet.media.any?
       picture_url = tweet.media.first.media_url
       caption = "#{tweet_text} — #{attribution}"
       puts picture_url
       puts tweet_url
       puts caption
       #tumblr.photo(ENV["TUMBLR_BLOG_URL"], :caption => caption, :source => picture_url, :link => tweet_url)
+    elsif tweet.urls.any? # link
+      tweet_link = tweet.urls.first.expanded_url
+      caption = "#{tweet_text} — #{attribution}"
+      puts tweet_link
+      puts tweet_text
+      puts "-- #{attribution}"
+      #tumblr.link(ENV["TUMBLR_BLOG_URL"], :title => caption, :link => tweet_link)
+    else # quote
+      puts tweet_text
+      puts "-- #{attribution}"
+      #tumblr.quote(ENV["TUMBLR_BLOG_URL"], :quote => tweet_text, :source => attribution)
     end
   end
 
