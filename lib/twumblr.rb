@@ -44,18 +44,21 @@ class Twumblr
       puts picture_url
       puts tweet_url
       puts caption
-      #tumblr.photo(ENV["TUMBLR_BLOG_URL"], :caption => caption, :source => picture_url, :link => tweet_url)
+      tumblr.photo(ENV["TUMBLR_BLOG_URL"], :caption => caption, :source => picture_url, :link => tweet_url)
     elsif tweet.urls.any? # link
       tweet_link = tweet.urls.first.expanded_url
       caption = "#{tweet_text} — #{attribution}"
       puts tweet_link
-      puts tweet_text
-      puts "-- #{attribution}"
-      #tumblr.link(ENV["TUMBLR_BLOG_URL"], :title => caption, :link => tweet_link)
+      puts caption
+      tumblr.link(ENV["TUMBLR_BLOG_URL"],
+        :title => tweet_text,
+        :url => tweet_link,
+        :description => "(via #{attribution})"
+      )
     else # quote
       puts tweet_text
       puts "-- #{attribution}"
-      #tumblr.quote(ENV["TUMBLR_BLOG_URL"], :quote => tweet_text, :source => attribution)
+      tumblr.quote(ENV["TUMBLR_BLOG_URL"], :quote => tweet_text, :source => attribution)
     end
   end
 
