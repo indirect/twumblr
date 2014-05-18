@@ -38,7 +38,7 @@ class Twumblr
     tweet_url = "http://twitter.com/#{tweet.from_user}/status/#{tweet.id}"
     tweet_text = tweet.text.gsub(%r| http\://\S*|, '')
     attribution = %|<a href="#{tweet_url}">@#{tweet.from_user}</a>|
-    if tweet.media.any?
+    if tweet.media.any? # photo
       picture_url = tweet.media.first.media_url
       caption = "#{tweet_text} — #{attribution}"
       puts picture_url
@@ -51,9 +51,8 @@ class Twumblr
       puts tweet_link
       puts caption
       tumblr.link(ENV["TUMBLR_BLOG_URL"],
-        :title => tweet_text,
         :url => tweet_link,
-        :description => "(via #{attribution})"
+        :description => caption
       )
     else # quote
       puts tweet_text
