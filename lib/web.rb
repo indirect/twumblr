@@ -11,7 +11,8 @@ class Web < Sinatra::Base
 
   post "/post" do
     return 404 unless params["token"] == "EjqIR3T8FWOiGUy9ujFkbfq"
-    Twumblr.new(params["html"]).post
+    post = Twumblr.new(params["html"]).post
+    File.join(ENV['TUMBLR_BLOG_URL'], "post", post["id"])
   end
 end
 
