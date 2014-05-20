@@ -9,3 +9,7 @@ gem 'puma'
 gem 'sinatra'
 gem 'tumblr_client'
 gem 'twitter'
+
+group :development do
+  gem 'pry'
+end
