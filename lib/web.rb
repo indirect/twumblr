@@ -2,6 +2,7 @@ require 'sinatra/base'
 require File.expand_path('../twumblr', __FILE__)
 
 class Web < Sinatra::Base
+  set :port, ENV['PORT']
   set :server, 'puma'
 
   post "/post" do
