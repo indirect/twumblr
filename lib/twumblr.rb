@@ -38,27 +38,27 @@ class Twumblr
     tweet_url = "http://twitter.com/#{tweet.from_user}/status/#{tweet.id}"
     tweet_text = tweet.text.gsub(%r| http\://\S*|, '')
     attribution = %|<a href="#{tweet_url}">@#{tweet.from_user}</a>|
+
     if tweet.media.any? # photo
-      picture_url = tweet.media.first.media_url
-      caption = "#{tweet_text} — #{attribution}"
-      puts picture_url
-      puts tweet_url
-      puts caption
-      tumblr.photo(ENV["TUMBLR_BLOG_URL"], :caption => caption, :source => picture_url, :link => tweet_url)
+      tumbl :photo,
+        :caption => "#{tweet_text} — #{attribution}",
+        :source => tweet.media.first.media_url,
+        :link => tweet_url
     elsif tweet.urls.any? # link
-      tweet_link = tweet.urls.first.expanded_url
-      caption = "#{tweet_text} — #{attribution}"
-      puts tweet_link
-      puts caption
-      tumblr.link(ENV["TUMBLR_BLOG_URL"],
-        :url => tweet_link,
-        :description => caption
-      )
+      tumbl :link,
+        :url => tweet.urls.first.expanded_url,
+        :description => "#{tweet_text} — #{attribution}"
     else # quote
-      puts tweet_text
-      puts "-- #{attribution}"
-      tumblr.quote(ENV["TUMBLR_BLOG_URL"], :quote => tweet_text, :source => attribution)
+      tumbl :quote,
+        :quote => tweet_text,
+        :source => attribution
     end
+  end
+
+  def tumbl(type, data = {})
+    puts "#{type}:\n#{data.inspect}"
+    return if ENV["DEBUG"]
+    tumblr.send(type, ENV["TUMBLR_BLOG_URL"], data)
   end
 
   def post
