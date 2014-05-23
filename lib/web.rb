@@ -1,9 +1,11 @@
 require 'sinatra/base'
+require 'redis'
 require 'twumblr'
 
 class Web < Sinatra::Base
   set :port, ENV['PORT']
   set :server, 'puma'
+  set :redis, Redis.new
 
   configure :development do
     require 'pry'
@@ -18,12 +20,12 @@ class Web < Sinatra::Base
   end
 
   def posted?(html)
-    redis.get(sha(html))
+    settings.redis.get(sha(html))
   end
 
   def mark_posted(html)
     one_week = 60 * 60 * 24 * 7
-    redis.set(sha(html), "posted", ex: one_week)
+    settings.redis.set(sha(html), "posted", ex: one_week)
   end
 
   def sha(html)
@@ -34,10 +36,6 @@ class Web < Sinatra::Base
     File.join(ENV['TUMBLR_BLOG_URL'], "post", post["id"].to_s)
   end
 
-  def redis
-    require 'redis'
-    @redis ||= Redis.new
-  end
 end
 
 Web.run! if $0 == __FILE__
