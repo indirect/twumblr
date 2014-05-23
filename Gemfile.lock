@@ -25,6 +25,7 @@ GEM
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
+    redis (3.0.6)
     simple_oauth (0.2.0)
     sinatra (1.4.5)
       rack (~> 1.4)
@@ -53,6 +54,7 @@ DEPENDENCIES
   http
   pry
   puma
+  redis
   sinatra
   tumblr_client
   twitter
