@@ -1,1 +1,1 @@
-web: bundle exec ruby lib/web.rb
+web: ruby -rbundler/setup -Ilib lib/web.rb
