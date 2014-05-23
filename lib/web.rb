@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require File.expand_path('../twumblr', __FILE__)
+require 'env'
 
 class Web < Sinatra::Base
   set :port, ENV['PORT']
