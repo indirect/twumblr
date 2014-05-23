@@ -1,5 +1,4 @@
 require 'sinatra/base'
-require 'env'
 require 'twumblr'
 
 class Web < Sinatra::Base
