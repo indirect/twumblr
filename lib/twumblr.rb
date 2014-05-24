@@ -36,7 +36,7 @@ class Twumblr
 
   def tumbl_tweet(tweet)
     tweet_url = "http://twitter.com/#{tweet.from_user}/status/#{tweet.id}"
-    tweet_text = tweet.text.gsub(%r{ http\://\S*| pic\.twitter\.com\S*| t.co\S*}, '')
+    tweet_text = tweet.text.gsub(%r{(?:^| )(?:http\://\S*|pic\.twitter\.com\S*|t.co\S*)}, '')
     attribution = %|<a href="#{tweet_url}">@#{tweet.from_user}</a>|
 
     if tweet.media.any? # photo
