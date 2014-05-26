@@ -1,4 +1,6 @@
 require 'sinatra/base'
+require 'bugsnag'
+require 'bugsnag/rack'
 require 'redis'
 require 'twumblr'
 
@@ -7,8 +9,15 @@ class Web < Sinatra::Base
   set :server, 'puma'
   set :redis, Redis.new
 
+  use Bugsnag::Rack
+
   configure :development do
     require 'pry'
+  end
+
+  error do
+    Bugsnag.notify(env['sinatra.error'])
+    return 403
   end
 
   post "/post" do
