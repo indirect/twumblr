@@ -47,7 +47,8 @@ class Twumblr
     elsif tweet.urls.any? # link
       tumbl :link,
         :url => follow_redirects(tweet.urls.first.expanded_url),
-        :description => "#{tweet_text} — #{attribution}"
+        :description => "— #{attribution}",
+        :title => tweet_text
     else # quote
       tumbl :quote,
         :quote => tweet_text,
