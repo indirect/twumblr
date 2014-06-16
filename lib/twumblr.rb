@@ -11,6 +11,12 @@ class Twumblr
     res.uri.to_s
   end
 
+  def title_at_url(url)
+    require 'http'
+    res = HTTP.get(url)
+    res.to_s.scan(%r|<title>(.*)</title>|).flatten.first
+  end
+
   def twitter
     require 'twitter'
     @twitter ||= Twitter::Client.new(
@@ -45,10 +51,11 @@ class Twumblr
         :source => tweet.media.first.media_url,
         :link => tweet_url
     elsif tweet.urls.any? # link
+      link = tweet.urls.first.expanded_url
       tumbl :link,
-        :url => follow_redirects(tweet.urls.first.expanded_url),
-        :description => "— #{attribution}",
-        :title => tweet_text
+        :url => follow_redirects(link),
+        :description => "#{tweet_text} — #{attribution}",
+        :title => title_at_url(link)
     else # quote
       tumbl :quote,
         :quote => tweet_text,
