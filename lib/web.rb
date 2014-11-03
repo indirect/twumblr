@@ -21,7 +21,7 @@ class Web < Sinatra::Base
   end
 
   post "/post" do
-    return 404 unless params["token"] == "EjqIR3T8FWOiGUy9ujFkbfq"
+    return 404 unless params["token"] == ENV['TOKEN']
     return 200 if posted?(email_body)
     post = Twumblr.new(email_body).post
     mark_posted(email_body)
