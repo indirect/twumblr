@@ -19,7 +19,7 @@ class Twumblr
 
   def twitter
     require 'twitter'
-    @twitter ||= Twitter::Client.new(
+    @twitter ||= Twitter::REST::Client.new(
       :consumer_key => ENV["TWITTER_API_KEY"],
       :consumer_secret => ENV["TWITTER_API_SECRET"]
     )
@@ -27,7 +27,7 @@ class Twumblr
 
   def tweet_at_url(url)
     tweet_id = url.match(%r|twitter.com/\w*/status/(\d*)|){|m| m[1] }
-    twitter.status(tweet_id)
+    twitter.status(tweet_id, tweet_mode: "extended")
   end
 
   def tumblr
@@ -41,9 +41,10 @@ class Twumblr
   end
 
   def tumbl_tweet(tweet)
-    tweet_url = "http://twitter.com/#{tweet.from_user}/status/#{tweet.id}"
-    tweet_text = tweet.text.gsub(%r{(?:^| )(?:http\://\S*|pic\.twitter\.com\S*|t.co\S*)}, '')
-    attribution = %|<a href="#{tweet_url}">@#{tweet.from_user}</a>|
+    tweet_url = "http://twitter.com/#{tweet.user.screen_name}/status/#{tweet.id}"
+    tweet_text = tweet.attrs[:full_text]
+    tweet_text.gsub!(%r{(?:^| )(?:http\://\S*|pic\.twitter\.com\S*|t.co\S*)}, '')
+    attribution = %|<a href="#{tweet_url}">@#{tweet.user.screen_name}</a>|
 
     if tweet.media.any? # photo
       tumbl :photo,
