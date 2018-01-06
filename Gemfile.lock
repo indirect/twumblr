@@ -1,56 +1,82 @@
-GEM
-  remote: https://rubygems.org/
+GIT
+  remote: https://github.com/indirect/tumblr_client
+  revision: d7806a01f78c5fc4b657cea0bcc2d6c3f9503ea8
   specs:
-    bugsnag (2.0.1)
-      httparty (>= 0.6, < 1.0)
-      multi_json (~> 1.0)
-    coderay (1.1.0)
-    dotenv (0.10.0)
-    faraday (0.8.9)
-      multipart-post (~> 1.2.0)
-    faraday_middleware (0.9.1)
-      faraday (>= 0.7.4, < 0.10)
-    http (0.6.0)
-      http_parser.rb (~> 0.6.0)
-    http_parser.rb (0.6.0)
-    httparty (0.13.1)
-      json (~> 1.8)
-      multi_xml (>= 0.5.2)
-    json (1.8.1)
-    method_source (0.8.2)
-    mime-types (2.2)
-    multi_json (1.10.0)
-    multi_xml (0.5.5)
-    multipart-post (1.2.0)
-    oauth (0.4.7)
-    pry (0.9.12.6)
-      coderay (~> 1.0)
-      method_source (~> 0.8)
-      slop (~> 3.4)
-    puma (2.8.2)
-      rack (>= 1.1, < 2.0)
-    rack (1.5.2)
-    rack-protection (1.5.3)
-      rack
-    redis (3.0.6)
-    simple_oauth (0.2.0)
-    sinatra (1.4.5)
-      rack (~> 1.4)
-      rack-protection (~> 1.4)
-      tilt (~> 1.3, >= 1.3.4)
-    slop (3.5.0)
-    tilt (1.4.1)
-    tumblr_client (0.8.2)
-      faraday (>= 0.8)
-      faraday_middleware (>= 0.8)
+    tumblr_client (0.8.5)
+      faraday (~> 0.9)
+      faraday_middleware (~> 0.9)
       json
       mime-types
       oauth
       simple_oauth
-    twitter (4.8.1)
-      faraday (~> 0.8, < 0.10)
-      multi_json (~> 1.0)
-      simple_oauth (~> 0.2)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
+    buftok (0.2.0)
+    bugsnag (6.5.0)
+    coderay (1.1.2)
+    domain_name (0.5.20170404)
+      unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.2.1)
+    equalizer (0.0.11)
+    faraday (0.13.1)
+      multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.12.2)
+      faraday (>= 0.7.4, < 1.0)
+    http (3.0.0)
+      addressable (~> 2.3)
+      http-cookie (~> 1.0)
+      http-form_data (>= 2.0.0.pre.pre2, < 3)
+      http_parser.rb (~> 0.6.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
+    http-form_data (2.0.0)
+    http_parser.rb (0.6.0)
+    json (2.1.0)
+    memoizable (0.4.2)
+      thread_safe (~> 0.3, >= 0.3.1)
+    method_source (0.9.0)
+    mime-types (3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2016.0521)
+    multipart-post (2.0.0)
+    mustermann (1.0.1)
+    naught (1.1.0)
+    oauth (0.5.4)
+    pry (0.11.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    public_suffix (3.0.1)
+    puma (3.11.0)
+    rack (2.0.3)
+    rack-protection (2.0.0)
+      rack
+    redis (4.0.1)
+    simple_oauth (0.3.1)
+    sinatra (2.0.0)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.0)
+      tilt (~> 2.0)
+    thread_safe (0.3.6)
+    tilt (2.0.8)
+    twitter (6.2.0)
+      addressable (~> 2.3)
+      buftok (~> 0.2.0)
+      equalizer (~> 0.0.11)
+      http (~> 3.0)
+      http-form_data (~> 2.0)
+      http_parser.rb (~> 0.6.0)
+      memoizable (~> 0.4.0)
+      multipart-post (~> 2.0)
+      naught (~> 1.0)
+      simple_oauth (~> 0.3.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.4)
 
 PLATFORMS
   ruby
@@ -58,11 +84,14 @@ PLATFORMS
 DEPENDENCIES
   bugsnag
   dotenv
-  faraday (< 0.9.0)
+  faraday
   http
   pry
   puma
   redis
   sinatra
-  tumblr_client
-  twitter
+  tumblr_client!
+  twitter (~> 6.2)
+
+BUNDLED WITH
+   1.16.1

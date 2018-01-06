@@ -1,15 +1,15 @@
 source 'https://rubygems.org'
 
-ruby '2.1.2'
+git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 gem 'bugsnag'
 gem 'dotenv'
-gem 'faraday', '< 0.9.0' # tumblr_client lies
+gem 'faraday'
 gem 'http'
 gem 'puma'
 gem 'sinatra'
-gem 'tumblr_client'
-gem 'twitter'
+gem 'tumblr_client', github: 'indirect/tumblr_client'
+gem 'twitter', '~> 6.2'
 gem 'redis'
 
 group :development do
