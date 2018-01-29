@@ -1,6 +1,5 @@
 require 'sinatra/base'
 require 'bugsnag'
-require 'bugsnag/rack'
 require 'redis'
 require 'twumblr'
 
