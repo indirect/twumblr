@@ -29,7 +29,11 @@ class Web < Sinatra::Base
   end
 
   def email_body
-    params["html"].empty? ? params["plain"] : params["html"]
+    if params.has_key?("html") && !params["html"].empty?
+      params["html"]
+    else
+      params["plain"]
+    end
   end
 
   def posted?(html)
@@ -46,6 +50,7 @@ class Web < Sinatra::Base
   end
 
   def post_url(post)
+    return unless post && post.has_key?("id")
     File.join(ENV['TUMBLR_BLOG_URL'], "post", post["id"].to_s)
   end
 
