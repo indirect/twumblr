@@ -36,6 +36,7 @@ class Web < Sinatra::Base
   end
 
   def posted?(html)
+    return false if ENV.has_key?("DEBUG")
     settings.redis.get(sha(html))
   end
 
