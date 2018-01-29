@@ -43,7 +43,7 @@ class Twumblr
   def tumbl_tweet(tweet)
     tweet_url = "http://twitter.com/#{tweet.user.screen_name}/status/#{tweet.id}"
     tweet_text = tweet.attrs[:full_text]
-    tweet_text.gsub!(%r{(?:^| )(?:http\://\S*|pic\.twitter\.com\S*|t.co\S*)}, '')
+    tweet_text.gsub!(%r{(?:^| )(?:https?\://\S*|pic\.twitter\.com\S*|t.co\S*)}, '')
     attribution = %|<a href="#{tweet_url}">@#{tweet.user.screen_name}</a>|
 
     if tweet.media.any? # photo
