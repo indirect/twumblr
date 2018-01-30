@@ -1,3 +1,5 @@
+require 'faraday'
+
 class Twumblr
 
   def initialize(text)
@@ -46,7 +48,12 @@ class Twumblr
     tweet_text.gsub!(%r{(?:^| )(?:https?\://\S*|pic\.twitter\.com\S*|t.co\S*)}, '')
     attribution = %|<a href="#{tweet_url}">@#{tweet.user.screen_name}</a>|
 
-    if tweet.media.any? # photo
+    if tweet.media.any? && tweet.media.first.video_info # video
+      res = HTTP.get(tweet.media.first.video_info.variants.first.url.to_s)
+      tumbl :video,
+        :caption => "#{tweet_text} - #{attribution}",
+        :data => Faraday::UploadIO.new(StringIO.new(res.to_s), res.content_type.mime_type)
+    elsif tweet.media.any? # photo
       tumbl :photo,
         :caption => "#{tweet_text} — #{attribution}",
         :source => tweet.media.first.media_url,
