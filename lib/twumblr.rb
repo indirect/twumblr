@@ -48,7 +48,7 @@ class Twumblr
     tweet_text.gsub!(%r{(?:^| )(?:https?\://\S*|pic\.twitter\.com\S*|t.co\S*)}, '')
     attribution = %|<a href="#{tweet_url}">@#{tweet.user.screen_name}</a>|
 
-    if tweet.media.any? && tweet.media.first.video_info # video
+    if tweet.media.any? && tweet.media.first.type == "video"
       res = HTTP.get(tweet.media.first.video_info.variants.first.url.to_s)
       tumbl :video,
         :caption => "#{tweet_text} - #{attribution}",
