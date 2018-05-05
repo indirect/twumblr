@@ -42,6 +42,16 @@ class Twumblr
     )
   end
 
+  def photo_data_from(media)
+    media.map do |m|
+      res = Faraday.get(m.media_url)
+      io = StringIO.new(res.body)
+      type = res.headers["content-type"]
+      filename = m.media_uri.path.split("/").last
+      Faraday::UploadIO.new(io, type, filename)
+    end
+  end
+
   def tumbl_tweet(tweet)
     tweet_url = "http://twitter.com/#{tweet.user.screen_name}/status/#{tweet.id}"
     tweet_text = tweet.attrs[:full_text]
@@ -56,7 +66,7 @@ class Twumblr
     elsif tweet.media.any? # photo
       tumbl :photo,
         :caption => "#{tweet_text} — #{attribution}",
-        :source => tweet.media.first.media_url,
+        :data => photo_data_from(tweet.media),
         :link => tweet_url
     elsif tweet.urls.any? # link
       link = tweet.urls.first.expanded_url
