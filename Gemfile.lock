@@ -43,7 +43,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     multipart-post (2.0.0)
-    mustermann (1.0.2)
+    mustermann (1.0.3)
     naught (1.1.0)
     oauth (0.5.4)
     pry (0.11.3)
@@ -51,18 +51,18 @@ GEM
       method_source (~> 0.9.0)
     public_suffix (3.0.1)
     puma (3.11.0)
-    rack (2.0.5)
-    rack-protection (2.0.1)
+    rack (2.0.7)
+    rack-protection (2.0.2)
       rack
     redis (4.0.1)
     simple_oauth (0.3.1)
-    sinatra (2.0.1)
+    sinatra (2.0.2)
       mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.1)
+      rack-protection (= 2.0.2)
       tilt (~> 2.0)
     thread_safe (0.3.6)
-    tilt (2.0.8)
+    tilt (2.0.9)
     twitter (6.2.0)
       addressable (~> 2.3)
       buftok (~> 0.2.0)
@@ -89,7 +89,7 @@ DEPENDENCIES
   pry
   puma
   redis
-  sinatra (~> 2.0, >= 2.0.1)
+  sinatra (~> 2.0)
   tumblr_client!
   twitter (~> 6.2)
 
