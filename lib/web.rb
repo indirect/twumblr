@@ -21,10 +21,13 @@ class Web < Sinatra::Base
 
   post "/post" do
     return 404 unless params["token"] == ENV['TOKEN']
-    return 200 if posted?(email_body)
+    url = posted?(email_body)
+    return url if url
+
     post = Twumblr.new(email_body).post
-    mark_posted(email_body)
-    return post_url(post)
+    url = post_url(post)
+    mark_posted(email_body, url)
+    return url
   end
 
   def email_body
@@ -40,9 +43,9 @@ class Web < Sinatra::Base
     settings.redis.get(sha(html))
   end
 
-  def mark_posted(html)
+  def mark_posted(html, url)
     one_week = 60 * 60 * 24 * 7
-    settings.redis.set(sha(html), "posted", ex: one_week)
+    settings.redis.set(sha(html), url, ex: one_week)
   end
 
   def sha(html)
