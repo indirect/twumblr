@@ -51,7 +51,7 @@ class Web < Sinatra::Base
 
   def post_url(post)
     return unless post && post.has_key?("id")
-    File.join(ENV['TUMBLR_BLOG_URL'], "post", post["id"].to_s)
+    "https://" + File.join(ENV['TUMBLR_BLOG_URL'], "post", post["id"].to_s)
   end
 
 end
