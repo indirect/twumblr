@@ -56,7 +56,7 @@ class Twumblr
     tweet_url = "http://twitter.com/#{tweet.user.screen_name}/status/#{tweet.id}"
     tweet_text = tweet.attrs[:full_text]
     tweet_text.gsub!(%r{(?:^| )(?:https?\://\S*|pic\.twitter\.com\S*|t.co\S*)}, '')
-    tweet_text.gsub!("\n", "<br>")
+    tweet_text.gsub!("\n", "\n<br>")
     attribution = %|<a href="#{tweet_url}">@#{tweet.user.screen_name}</a>|
 
     if tweet.media.any? && tweet.media.first.type == "video"
