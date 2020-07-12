@@ -52,33 +52,62 @@ class Twumblr
     end
   end
 
-  def tumbl_tweet(tweet)
-    tweet_url = "http://twitter.com/#{tweet.user.screen_name}/status/#{tweet.id}"
-    tweet_text = tweet.attrs[:full_text]
-    tweet_text.gsub!(%r{(?:^| )(?:https?\://\S*|pic\.twitter\.com\S*|t.co\S*)}, '')
-    tweet_text.gsub!("\n", "\n<br>")
-    attribution = %|<a href="#{tweet_url}">@#{tweet.user.screen_name}</a>|
+  TweetInfo = Struct.new(:tweet) do
+    def url
+      "http://twitter.com/#{tweet.user.screen_name}/status/#{tweet.id}"
+    end
 
-    if tweet.media.any? && tweet.media.first.type == "video"
+    def text
+      tweet.attrs[:full_text].
+        gsub(%r{(?:^| )(?:https?\://\S*|pic\.twitter\.com\S*|t.co\S*)}, '').
+        gsub("\n", "\n<br>")
+    end
+
+    def source
+      %|<a href="#{url}">@#{tweet.user.screen_name}</a>|
+    end
+
+    def caption
+      [text, source].join(" — ")
+    end
+
+    def quote_tweet_body
+      quoted = TweetInfo.new(tweet.quoted_tweet)
+      qphoto = tweet.quoted_tweet.media.first
+
+      body = "<blockquote><p>\n"
+      body << "#{quoted.source}: #{quoted.text}\n"
+      body << %|<img src="#{qphoto.media_uri}">\n| if qphoto
+      body << "</p></blockquote>\n\n"
+      body << caption
+    end
+  end
+
+  def tumbl_tweet(tweet)
+    info = TweetInfo.new(tweet)
+
+    if tweet.quoted_tweet?
+      tumbl :text, body: info.quote_tweet_body, format: "html"
+    elsif tweet.media.any? && tweet.media.first.type == "video"
       res = HTTP.get(tweet.media.first.video_info.variants.first.url.to_s)
       tumbl :video,
-        :caption => "#{tweet_text} - #{attribution}",
+        :caption => info.caption,
         :data => Faraday::UploadIO.new(StringIO.new(res.to_s), res.content_type.mime_type)
     elsif tweet.media.any? # photo
       tumbl :photo,
-        :caption => "#{tweet_text} — #{attribution}",
+        :caption => info.caption,
         :data => photo_data_from(tweet.media),
-        :link => tweet_url
+        :link => info.url
     elsif tweet.urls.any? # link
       link = tweet.urls.first.expanded_url
       tumbl :link,
         :url => follow_redirects(link),
-        :description => "#{tweet_text} — #{attribution}",
+        :description => info.caption,
         :title => title_at_url(link)
     else # quote
       tumbl :quote,
-        :quote => tweet_text,
-        :source => attribution
+        :quote => info.text,
+        :source => info.source
     end
   end
 
