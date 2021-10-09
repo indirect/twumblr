@@ -12,4 +12,4 @@ jobs:
       #   with:
       #     args: "deploy"
       - run: gem install --user-install honeybadger
-      - run: honeybadger deploy --environment=production
+      - run: $(ruby -e 'puts Gem.user_dir')/bin/honeybadger deploy --environment=production
