@@ -11,5 +11,5 @@ jobs:
       #     FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
       #   with:
       #     args: "deploy"
-      - run: gem install honeybadger
+      - run: gem install --user-install honeybadger
       - run: honeybadger deploy --environment=production
