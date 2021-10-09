@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require 'bugsnag'
+require 'honeybadger'
 require 'redis'
 require 'twumblr'
 
@@ -9,12 +9,6 @@ class Web < Sinatra::Base
   set :port, ENV['PORT']
   set :server, 'puma'
   set :redis, Redis.new
-
-  use Bugsnag::Rack
-
-  configure do
-    Bugsnag.configuration.project_root = File.expand_path("..", __dir__)
-  end
 
   configure :development do
     require 'pry'
