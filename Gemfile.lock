@@ -10,6 +10,22 @@ GIT
       oauth
       simple_oauth
 
+GIT
+  remote: https://github.com/sferik/twitter
+  revision: 97f075aadd405427ba3cb5801feb67bdd1af77ef
+  specs:
+    twitter (7.0.0)
+      addressable (~> 2.3)
+      buftok (~> 0.2.0)
+      equalizer (~> 0.0.11)
+      http (~> 4.0)
+      http-form_data (~> 2.0)
+      http_parser.rb (~> 0.6.0)
+      memoizable (~> 0.4.0)
+      multipart-post (~> 2.0)
+      naught (~> 1.0)
+      simple_oauth (~> 0.3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -17,7 +33,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     buftok (0.2.0)
     coderay (1.1.3)
-    domain_name (0.5.20170404)
+    domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.2.1)
     equalizer (0.0.11)
@@ -25,15 +41,21 @@ GEM
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.14.0)
       faraday (>= 0.7.4, < 1.0)
+    ffi (1.15.4)
+    ffi-compiler (1.0.1)
+      ffi (>= 1.0.0)
+      rake
     honeybadger (4.9.0)
-    http (3.0.0)
+    http (4.4.1)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
-      http-form_data (>= 2.0.0.pre.pre2, < 3)
-      http_parser.rb (~> 0.6.0)
-    http-cookie (1.0.3)
+      http-form_data (~> 2.2)
+      http-parser (~> 1.2.0)
+    http-cookie (1.0.4)
       domain_name (~> 0.5)
-    http-form_data (2.0.0)
+    http-form_data (2.3.0)
+    http-parser (1.2.3)
+      ffi-compiler (>= 1.0, < 2.0)
     http_parser.rb (0.6.0)
     json (2.3.1)
     memoizable (0.4.2)
@@ -57,6 +79,7 @@ GEM
     rack (2.2.3)
     rack-protection (2.1.0)
       rack
+    rake (13.0.6)
     redis (4.0.1)
     ruby2_keywords (0.0.4)
     simple_oauth (0.3.1)
@@ -67,20 +90,9 @@ GEM
       tilt (~> 2.0)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    twitter (6.2.0)
-      addressable (~> 2.3)
-      buftok (~> 0.2.0)
-      equalizer (~> 0.0.11)
-      http (~> 3.0)
-      http-form_data (~> 2.0)
-      http_parser.rb (~> 0.6.0)
-      memoizable (~> 0.4.0)
-      multipart-post (~> 2.0)
-      naught (~> 1.0)
-      simple_oauth (~> 0.3.0)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.4)
+    unf_ext (0.0.8)
 
 PLATFORMS
   ruby
@@ -95,7 +107,7 @@ DEPENDENCIES
   redis
   sinatra (~> 2.0)
   tumblr_client!
-  twitter (~> 6.2)
+  twitter (~> 7.0)!
 
 RUBY VERSION
    ruby 3.0.0p0

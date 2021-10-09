@@ -9,7 +9,7 @@ gem "http"
 gem "puma"
 gem "sinatra", "~> 2.0"
 gem "tumblr_client", github: "indirect/tumblr_client"
-gem "twitter", "~> 6.2"
+gem "twitter", "~> 7.0", github: "sferik/twitter"
 gem "redis"
 gem "honeybadger", "~> 4.9"
 
