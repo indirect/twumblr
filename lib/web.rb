@@ -12,6 +12,10 @@ class Web < Sinatra::Base
 
   use Bugsnag::Rack
 
+  configure do
+    Bugsnag.configuration.project_root = File.expand_path("..", __dir__)
+  end
+
   configure :development do
     require 'pry'
   end
