@@ -77,16 +77,16 @@ GEM
     puma (5.6.4)
       nio4r (~> 2.0)
     rack (2.2.3)
-    rack-protection (2.1.0)
+    rack-protection (2.2.0)
       rack
     rake (13.0.6)
     redis (4.0.1)
-    ruby2_keywords (0.0.4)
+    ruby2_keywords (0.0.5)
     simple_oauth (0.3.1)
-    sinatra (2.1.0)
+    sinatra (2.2.0)
       mustermann (~> 1.0)
       rack (~> 2.2)
-      rack-protection (= 2.1.0)
+      rack-protection (= 2.2.0)
       tilt (~> 2.0)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -105,7 +105,7 @@ DEPENDENCIES
   pry
   puma
   redis
-  sinatra (~> 2.0)
+  sinatra (~> 2.2)
   tumblr_client!
   twitter (~> 7.0)!
 
