@@ -1,4 +1,2 @@
 .bundle
 .env
-/bin/*
-!/bin/twumblr
