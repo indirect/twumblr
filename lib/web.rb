@@ -14,11 +14,6 @@ class Web < Sinatra::Base
     require 'pry'
   end
 
-  error do
-    Bugsnag.notify(env['sinatra.error'])
-    return 403
-  end
-
   post "/post" do
     return 404 unless params["token"] == ENV['TOKEN']
     url = posted?(email_body)
