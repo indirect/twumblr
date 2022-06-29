@@ -89,7 +89,9 @@ class Twumblr
     if tweet.quoted_tweet?
       tumbl :text, body: info.quote_tweet_body, format: "html"
     elsif tweet.media.any? && tweet.media.first.type == "video"
-      res = HTTP.get(tweet.media.first.video_info.variants.first.url.to_s)
+      res = HTTP.get(tweet.media.first.video_info.variants.find do |v|
+        v.content_type == "video/mp4"
+      end.url.to_s)
       tumbl :video,
         :caption => info.caption,
         :data => Faraday::UploadIO.new(StringIO.new(res.to_s), res.content_type.mime_type)
