@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# grab api keys so it will work locally
+bin/production ssh console -C "/cnb/lifecycle/launcher env" | \
+  egrep "TWITTER|TUMBLR|HONEYBADGER" > .env
