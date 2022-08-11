@@ -17,12 +17,17 @@ class Web < Sinatra::Base
   post "/post" do
     return 404 unless params["token"] == ENV['TOKEN']
     url = posted?(email_body)
-    return url if url
+    return redirect(url) if url
 
     post = Twumblr.new(email_body).post
     url = post_url(post)
     mark_posted(email_body, url)
-    return url
+
+    if post["state"] == "transcoding"
+      post["display_text"]
+    else
+      redirect to(url)
+    end
   end
 
   def email_body
