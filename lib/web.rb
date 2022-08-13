@@ -16,18 +16,24 @@ class Web < Sinatra::Base
 
   post "/post" do
     return 404 unless params["token"] == ENV['TOKEN']
-    url = posted?(email_body)
-    return redirect(url) if url
+    post_url = posted?(email_body)
+    return post_url if post_url
 
     post = Twumblr.new(email_body).post
-    url = post_url(post)
-    mark_posted(email_body, url)
+    post_url = post_url(post)
+    mark_posted(email_body, post_url)
 
     if post["state"] == "transcoding"
-      post["display_text"]
-    else
-      redirect to(url)
+      param = URI.encode_www_form(s: post["display_text"])
+      return url("/message?#{param}")
     end
+
+    # Return the URL in the body so Shortcuts can open it
+    post_url
+  end
+
+  get "/message" do
+    params[:s]
   end
 
   def email_body
