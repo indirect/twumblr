@@ -7,7 +7,10 @@ require "pry"
 
 begin
   t = Twumblr.new(ARGV.first)
-  t.post
+  post = t.post
+  puts "got post: #{post.inspect}"
+  return unless post && post.has_key?("id")
+  "https://" + File.join(ENV['TUMBLR_BLOG_URL'], "post", post["id"].to_s)
 rescue => e
   binding.pry
 end
