@@ -19,19 +19,6 @@ class Twumblr
     res.to_s.scan(%r|<title>(.*)</title>|).flatten.first
   end
 
-  def twitter
-    require 'twitter'
-    @twitter ||= Twitter::REST::Client.new(
-      :consumer_key => ENV["TWITTER_API_KEY"],
-      :consumer_secret => ENV["TWITTER_API_SECRET"]
-    )
-  end
-
-  def tweet_at_url(url)
-    tweet_id = url.match(%r|twitter.com/\w*/status/(\d*)|){|m| m[1] }
-    twitter.status(tweet_id, tweet_mode: "extended")
-  end
-
   def tumblr
     require 'tumblr_client'
     @tumblr ||= Tumblr::Client.new(
@@ -53,6 +40,16 @@ class Twumblr
   end
 
   TweetInfo = Struct.new(:tweet) do
+    def self.from_url(url)
+      require 'twitter'
+      @twitter ||= Twitter::REST::Client.new(
+        :consumer_key => ENV["TWITTER_API_KEY"],
+        :consumer_secret => ENV["TWITTER_API_SECRET"]
+      )
+      tweet_id = url.match(%r|twitter.com/\w*/status/(\d*)|){|m| m[1] }
+      new(@twitter.status(tweet_id, tweet_mode: "extended")) if tweet_id
+    end
+
     def url
       "http://twitter.com/#{tweet.user.screen_name}/status/#{tweet.id}"
     end
@@ -83,8 +80,8 @@ class Twumblr
     end
   end
 
-  def tumbl_tweet(tweet)
-    info = TweetInfo.new(tweet)
+  def tumbl_post(info)
+    tweet = info.tweet
 
     if tweet.quoted_tweet?
       tumbl :text, body: info.quote_tweet_body, format: "html"
@@ -120,10 +117,10 @@ class Twumblr
   end
 
   def post
-    tweet = tweet_at_url(@text)
-    tweet ||= tweet_at_url(follow_redirects(@text))
-    abort "Couldn't find a tweet URL!" unless tweet
-    tumbl_tweet(tweet)
-  end
-end
+    info = TweetInfo.from_url(@text) || TweetInfo.from_url(follow_redirects(@text))
+    return tumbl_post(info) if info
 
+    abort "Couldn't find a post! Looked in:\n\n#{@text}"
+  end
+
+end
