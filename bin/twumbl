@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "dotenv/load"
+require_relative "../lib/twumblr"
+require "pry"
+
+begin
+  t = Twumblr.new(ARGV.first)
+  t.post
+rescue => e
+  binding.pry
+end
