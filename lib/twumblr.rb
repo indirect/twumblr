@@ -80,6 +80,77 @@ class Twumblr
     end
   end
 
+  PostInfo = Struct.new(:post) do
+    def self.from_url(url)
+      require 'http'
+      base, id = url.match(%r{(https?://.*?)/@.*/(\d+)}){|m| [m[1], m[2]] }
+      post_uri = "#{base}/api/v1/statuses/#{id}"
+      post = HTTP.get(post_uri).parse
+      p post if ENV["DEBUG"]
+      new(post)
+    end
+
+    def url
+      post["url"]
+    end
+
+    def text
+      post["content"]
+    end
+
+    def source
+      %|<a href="#{url}">@#{post.dig("account", "username")}</a>|
+    end
+
+    def caption
+      [text, source].join(" — ")
+    end
+
+    def type
+      if post.dig("media_attachments", 0, "type") == "video"
+        :video
+      elsif post.dig("media_attachments", 0, "type") == "image"
+        :photo
+      else
+        :quote
+      end
+    end
+
+    def data
+      case type
+      when :video
+      when :photo
+        {
+          :caption => caption,
+          :data => photo_data,
+          :link => url
+        }
+      when :quote
+        {quote: text, source: source}
+      end
+    end
+
+    def photo_data
+      post.fetch("media_attachments", []).map do |m|
+        create_faraday_upload(m["url"])
+      end
+    end
+
+    def create_faraday_upload(url)
+      res = Faraday.get(url)
+      io = StringIO.new(res.body)
+      type = res.headers["content-type"]
+      filename = url.split("/").last
+      Faraday::UploadIO.new(io, type, filename)
+    end
+
+    def to_tumblr(tumblr)
+      puts "#{type}:\n#{data.inspect}"
+      return if ENV["DEBUG"]
+      tumblr.send(type, ENV["TUMBLR_BLOG_URL"], data)
+    end
+  end
+
   def tumbl_post(info)
     tweet = info.tweet
 
@@ -117,8 +188,11 @@ class Twumblr
   end
 
   def post
-    info = TweetInfo.from_url(@text) || TweetInfo.from_url(follow_redirects(@text))
-    return tumbl_post(info) if info
+    tweet = TweetInfo.from_url(@text) || TweetInfo.from_url(follow_redirects(@text))
+    return tumbl_post(tweet) if tweet
+
+    post = PostInfo.from_url(@text)
+    return post.to_tumblr(tumblr) if post
 
     abort "Couldn't find a post! Looked in:\n\n#{@text}"
   end

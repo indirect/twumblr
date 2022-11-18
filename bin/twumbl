@@ -5,12 +5,16 @@ require "dotenv/load"
 require_relative "../lib/twumblr"
 require "pry"
 
-begin
+def main
   t = Twumblr.new(ARGV.first)
   post = t.post
   puts "got post: #{post.inspect}"
+  return if ENV.key?("DEBUG")
+
   return unless post && post.has_key?("id")
-  "https://" + File.join(ENV['TUMBLR_BLOG_URL'], "post", post["id"].to_s)
+  puts "https://" + File.join(ENV['TUMBLR_BLOG_URL'], "post", post["id"].to_s)
 rescue => e
   binding.pry
 end
+
+main
