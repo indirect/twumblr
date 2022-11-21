@@ -1,4 +1,5 @@
-require 'faraday'
+require "faraday"
+require "upmark"
 
 class Twumblr
 
@@ -118,7 +119,6 @@ class Twumblr
 
     def data
       case type
-      when :video
       when :photo
         {
           :caption => caption,
@@ -126,7 +126,9 @@ class Twumblr
           :link => url
         }
       when :quote
-        {quote: text, source: source}
+        {quote: text, source: source, format: "markdown"}
+      else
+        raise "unimplemented type #{type}!"
       end
     end
 
