@@ -1,5 +1,5 @@
 GIT
-  remote: https://github.com/indirect/tumblr_client
+  remote: https://github.com/indirect/tumblr_client.git
   revision: d7806a01f78c5fc4b657cea0bcc2d6c3f9503ea8
   branch: master
   specs:
@@ -12,7 +12,7 @@ GIT
       simple_oauth
 
 GIT
-  remote: https://github.com/sferik/twitter
+  remote: https://github.com/sferik/twitter.git
   revision: 97f075aadd405427ba3cb5801feb67bdd1af77ef
   specs:
     twitter (7.0.0)
@@ -30,8 +30,8 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.8.0)
-      public_suffix (>= 2.0.2, < 5.0)
+    addressable (2.8.1)
+      public_suffix (>= 2.0.2, < 6.0)
     buftok (0.2.0)
     coderay (1.1.3)
     domain_name (0.5.20190701)
@@ -42,17 +42,18 @@ GEM
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.14.0)
       faraday (>= 0.7.4, < 1.0)
-    ffi (1.15.4)
+    ffi (1.15.5)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
+    hashie (5.0.0)
     honeybadger (4.9.0)
     http (4.4.1)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
       http-parser (~> 1.2.0)
-    http-cookie (1.0.4)
+    http-cookie (1.0.5)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
     http-parser (1.2.3)
@@ -70,11 +71,17 @@ GEM
       ruby2_keywords (~> 0.0.1)
     naught (1.1.0)
     nio4r (2.5.8)
-    oauth (0.5.10)
+    oauth (1.1.0)
+      oauth-tty (~> 1.0, >= 1.0.1)
+      snaky_hash (~> 2.0)
+      version_gem (~> 1.1)
+    oauth-tty (1.0.5)
+      version_gem (~> 1.1, >= 1.1.1)
+    parslet (1.8.2)
     pry (0.14.0)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    public_suffix (4.0.6)
+    public_suffix (5.0.0)
     puma (5.6.4)
       nio4r (~> 2.0)
     rack (2.2.3.1)
@@ -89,26 +96,32 @@ GEM
       rack (~> 2.2)
       rack-protection (= 2.2.0)
       tilt (~> 2.0)
+    snaky_hash (2.0.1)
+      hashie
+      version_gem (~> 1.1, >= 1.1.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.8)
+    unf_ext (0.0.8.2)
+    upmark (1.0.0)
+      parslet (~> 1.8.2)
+    version_gem (1.1.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  dotenv
-  faraday
+  dotenv (~> 2.2)
+  faraday (~> 0.17)
   honeybadger (~> 4.9)
-  http
-  pry
-  puma
-  redis
+  pry (~> 0.14)
+  puma (~> 5.6)
+  redis (~> 4.0)
   sinatra (~> 2.2)
   tumblr_client!
   twitter (~> 7.0)!
+  upmark (~> 1.0)
 
 RUBY VERSION
    ruby 3.1.2p20

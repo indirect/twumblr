@@ -1,18 +1,17 @@
+source "https://rubygems.org"
+
 ruby File.read("#{__dir__}/.ruby-version").chomp
 
-source "https://rubygems.org"
-git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+group :development do
+  gem "pry", "~> 0.14"
+end
 
-gem "dotenv"
-gem "faraday"
-gem "http"
-gem "puma"
+gem "dotenv", "~> 2.2"
+gem "faraday", "~> 0.17"
+gem "honeybadger", "~> 4.9"
+gem "puma", "~> 5.6"
+gem "redis", "~> 4.0"
 gem "sinatra", "~> 2.2"
 gem "tumblr_client", github: "indirect/tumblr_client", branch: "master"
 gem "twitter", "~> 7.0", github: "sferik/twitter"
-gem "redis"
-gem "honeybadger", "~> 4.9"
-
-group :development do
-  gem "pry"
-end
+gem "upmark", "~> 1.0"
