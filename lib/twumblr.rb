@@ -40,15 +40,71 @@ class Twumblr
     end
   end
 
+  ChostInfo = Struct.new(:chost) do
+    def self.from_url(url)
+      return unless url.match(%r|cohost.org|)
+
+      require 'http'
+      state = HTTP.get(url).to_s.match(%r|trpc-dehydrated-state">(.+?)</script|){|m| m[1] }
+      trpc = JSON.parse(state)
+      chost = trpc["queries"].find{|q| q.dig("queryKey", 0, 1) == "singlePost" }.dig("state", "data", "post")
+      p chost if ENV["DEBUG"]
+      return unless chost
+
+      if chost["transparentShareOfPostId"]
+        new(chost["shareTree"].find{|h| h["postId"] == chost["transparentShareOfPostId"] })
+      else
+        new(chost)
+      end
+    end
+
+    def url
+      chost["singlePostPageUrl"]
+    end
+
+    def text
+      ["### #{chost["headline"]}", *chost["blocks"].flat_map{|b| b.dig("markdown", "content") }].join("\n\n")
+    end
+
+    def source
+      %|<a href="#{url}">@#{chost.dig("postingProject", "handle")}</a>|
+    end
+
+    def caption
+      [text, source].join(" — ")
+    end
+
+    def type
+      :quote
+    end
+
+    def data
+      case type
+      when :quote
+        {quote: text, source: source, format: "markdown"}
+      else
+        raise "unimplemented type #{type}!"
+      end
+    end
+
+    def to_tumblr(tumblr)
+      puts "#{type}:\n#{data.inspect}"
+      return if ENV["DEBUG"]
+      tumblr.send(type, ENV["TUMBLR_BLOG_URL"], data)
+    end
+  end
+
   TweetInfo = Struct.new(:tweet) do
     def self.from_url(url)
+      tweet_id = url.match(%r|twitter.com/\w*/status/(\d*)|){|m| m[1] }
+      return nil unless tweet_id
+
       require 'twitter'
       @twitter ||= Twitter::REST::Client.new(
         :consumer_key => ENV["TWITTER_API_KEY"],
         :consumer_secret => ENV["TWITTER_API_SECRET"]
       )
-      tweet_id = url.match(%r|twitter.com/\w*/status/(\d*)|){|m| m[1] }
-      new(@twitter.status(tweet_id, tweet_mode: "extended")) if tweet_id
+      new(@twitter.status(tweet_id, tweet_mode: "extended"))
     end
 
     def url
@@ -83,8 +139,10 @@ class Twumblr
 
   PostInfo = Struct.new(:post) do
     def self.from_url(url)
-      require 'http'
       base, id = url.match(%r{(https?://.*?)/@.*/(\d+)}){|m| [m[1], m[2]] }
+      return nil unless base && id
+
+      require 'http'
       post_uri = "#{base}/api/v1/statuses/#{id}"
       post = HTTP.get(post_uri).parse
       p post if ENV["DEBUG"]
@@ -190,6 +248,9 @@ class Twumblr
   end
 
   def post
+    chost = ChostInfo.from_url(@text)
+    return chost.to_tumblr(tumblr) if chost
+
     tweet = TweetInfo.from_url(@text) || TweetInfo.from_url(follow_redirects(@text))
     return tumbl_post(tweet) if tweet
 
