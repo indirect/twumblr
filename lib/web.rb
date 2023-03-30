@@ -3,8 +3,6 @@ require 'honeybadger'
 require 'redis'
 require 'twumblr'
 
-ENV["REDIS_URL"] ||= ENV["FLY_REDIS_CACHE_URL"] if ENV.key?("FLY_REDIS_CACHE_URL")
-
 class Web < Sinatra::Base
   set :port, ENV['PORT']
   set :server, 'puma'
