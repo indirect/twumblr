@@ -83,16 +83,22 @@ class Twumblr
       "#{name} (#{handle})"
     end
 
-    def caption
-      "#{quote_text}#{text} — #{source}"
+    def photos
+      skeet.locate("*/section[@id=images]/img")
     end
 
     def type
-      :quote
+      if photos.any?
+        :photo
+      else
+        :quote
+      end
     end
 
     def data
       case type
+      when :photo
+        {caption: "#{text} — #{source}", data: photo_data, link: url}
       when :quote
         {quote: post, source: source, format: "markdown"}
       else
@@ -101,9 +107,7 @@ class Twumblr
     end
 
     def photo_data
-      post.fetch("media_attachments", []).map do |m|
-        create_faraday_upload(m["url"])
-      end
+      photos.map { |m| create_faraday_upload(m.src) }
     end
 
     def create_faraday_upload(url)
