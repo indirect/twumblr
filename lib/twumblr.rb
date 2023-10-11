@@ -100,7 +100,7 @@ class Twumblr
       when :photo
         {caption: "#{text} — #{source}", data: photo_data, link: url}
       when :quote
-        {quote: post, source: source, format: "markdown"}
+        {quote: text, source: source, format: "markdown"}
       else
         raise "unimplemented type #{type}!"
       end
