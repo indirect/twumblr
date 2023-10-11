@@ -15,3 +15,5 @@ gem "sinatra", "~> 2.2"
 gem "tumblr_client", github: "indirect/tumblr_client", branch: "master"
 gem "twitter", "~> 7.0", github: "sferik/twitter"
 gem "upmark", "~> 1.0"
+
+gem "ox", "~> 2.14"

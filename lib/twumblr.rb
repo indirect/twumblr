@@ -21,7 +21,7 @@ class Twumblr
   end
 
   def tumblr
-    require 'tumblr_client'
+    require "tumblr_client"
     @tumblr ||= Tumblr::Client.new(
       :consumer_key => ENV["TUMBLR_CONSUMER_KEY"],
       :consumer_secret => ENV["TUMBLR_CONSUMER_SECRET_KEY"],
@@ -37,6 +37,79 @@ class Twumblr
       type = res.headers["content-type"]
       filename = m.media_uri.path.split("/").last
       Faraday::UploadIO.new(io, type, filename)
+    end
+  end
+
+  SkeetInfo = Struct.new(:skeet) do
+    def self.from_url(url)
+      return unless url.match(%r{bsky\.app|skeeet\.xyz})
+
+      require "http"
+      uri = URI.parse(url)
+      post_uri = "https://skeeet.xyz#{uri.path}"
+      post = HTTP.get(post_uri).to_s
+      require "ox"
+      parsed = Ox.load(post, mode: :generic, effort: :tolerant, smart: true)
+      new(parsed)
+    end
+
+    def property(name)
+      skeet.locate("head/meta").find do |e|
+        e.attributes.include?(:property) && e.property == name
+      end&.content
+    end
+
+    def url
+      skeet.locate("*/a").find{|a| a.text == "Permalink" }.href
+    end
+
+    def text
+      property("og:description").gsub("\n", "\n<br>")
+    end
+
+    def displayname
+      property("og:title")
+    end
+
+    def source
+      %|<a href="#{url}">#{displayname || url}</a>|
+    end
+
+    def caption
+      [text, source].join(" — ")
+    end
+
+    def type
+      :quote
+    end
+
+    def data
+      case type
+      when :quote
+        {quote: text, source: source, format: "markdown"}
+      else
+        raise "unimplemented type #{type}!"
+      end
+    end
+
+    def photo_data
+      post.fetch("media_attachments", []).map do |m|
+        create_faraday_upload(m["url"])
+      end
+    end
+
+    def create_faraday_upload(url)
+      res = Faraday.get(url)
+      io = StringIO.new(res.body)
+      type = res.headers["content-type"]
+      filename = url.split("/").last
+      Faraday::UploadIO.new(io, type, filename)
+    end
+
+    def to_tumblr(tumblr)
+      puts "#{type}:\n#{data.inspect}"
+      return if ENV["DEBUG"]
+      tumblr.send(type, ENV["TUMBLR_BLOG_URL"], data)
     end
   end
 
@@ -248,6 +321,9 @@ class Twumblr
   end
 
   def post
+    skeet = SkeetInfo.from_url(@text)
+    return skeet.to_tumblr(tumblr) if skeet
+
     chost = ChostInfo.from_url(@text)
     return chost.to_tumblr(tumblr) if chost
 
