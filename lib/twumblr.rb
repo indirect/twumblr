@@ -49,34 +49,42 @@ class Twumblr
       post_uri = "https://skeeet.xyz#{uri.path}"
       post = HTTP.get(post_uri).to_s
       require "ox"
-      parsed = Ox.load(post, mode: :generic, effort: :tolerant, smart: true)
-      new(parsed)
-    end
-
-    def property(name)
-      skeet.locate("head/meta").find do |e|
-        e.attributes.include?(:property) && e.property == name
-      end&.content
-    end
-
-    def url
-      skeet.locate("*/a").find{|a| a.text == "Permalink" }.href
+      skeet = Ox.load(post, mode: :generic, effort: :tolerant, smart: true)
+      new(skeet)
     end
 
     def text
-      property("og:description").gsub("\n", "\n<br>")
+      body = skeet.locate("*/section[@id=body]/?[@class=body-text]").first
+      text = body.nodes.map{|n| n.is_a?(String) ? n : Ox.dump(n) }.join
+
+      "#{quote_text}#{text}"
     end
 
-    def displayname
-      property("og:title")
+    def quote_text
+      body = skeet.locate("*/section[@class=quoted-post]/?[@class=body-text]").first
+      return unless body
+
+      quote = "<blockquote><p>\n"
+      quote << body.nodes.map{|n| n.is_a?(String) ? n : Ox.dump(n) }.join
+      quote << "</p></blockquote>\n\n"
     end
 
     def source
-      %|<a href="#{url}">#{displayname || url}</a>|
+      %|<a href="#{url}">#{attribution}</a>|
+    end
+
+    def url
+      skeet.locate("*/a[@title]/@href").first
+    end
+
+    def attribution
+      name = skeet.locate("*/?[@class=display-name]/h1").first&.text
+      handle = skeet.locate("*/?[@class=display-name]/h2").first&.text
+      "#{name} (#{handle})"
     end
 
     def caption
-      [text, source].join(" — ")
+      "#{quote_text}#{text} — #{source}"
     end
 
     def type
@@ -86,7 +94,7 @@ class Twumblr
     def data
       case type
       when :quote
-        {quote: text, source: source, format: "markdown"}
+        {quote: post, source: source, format: "markdown"}
       else
         raise "unimplemented type #{type}!"
       end
