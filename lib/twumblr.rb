@@ -1,8 +1,19 @@
 require "faraday"
 require "upmark"
 
-class Twumblr
+class Info < Struct
+  def uploads_for(urls)
+    urls.map do |u|
+      res = Faraday.get(u)
+      io = StringIO.new(res.body)
+      type = res.headers["content-type"]
+      filename = u.split("/").last
+      Faraday::UploadIO.new(io, type, filename)
+    end
+  end
+end
 
+class Twumblr
   def initialize(text)
     @text = text
   end
@@ -12,12 +23,6 @@ class Twumblr
     res = HTTP.head(url)
     res = HTTP.head(res.headers['Location']) while res.headers['Location']
     res.uri.to_s
-  end
-
-  def title_at_url(url)
-    require 'http'
-    res = HTTP.get(url)
-    res.to_s.scan(%r|<title>(.*)</title>|).flatten.first
   end
 
   def tumblr
@@ -30,17 +35,7 @@ class Twumblr
     )
   end
 
-  def photo_data_from(urls)
-    urls.map do |u|
-      res = Faraday.get(u)
-      io = StringIO.new(res.body)
-      type = res.headers["content-type"]
-      filename = u.split("/").last
-      Faraday::UploadIO.new(io, type, filename)
-    end
-  end
-
-  SkeetInfo = Struct.new(:skeet) do
+  SkeetInfo = Info.new(:skeet) do
     def self.from_url(url)
       return unless url.match(%r{bsky\.app|skeeet\.xyz})
 
@@ -98,7 +93,7 @@ class Twumblr
     def data
       case type
       when :photo
-        {caption: "#{text} — #{source}", data: photo_data_from(photos), link: url}
+        {caption: "#{text} — #{source}", data: uploads_for(photos), link: url}
       when :quote
         {quote: text, source: source, format: "markdown"}
       else
@@ -113,7 +108,7 @@ class Twumblr
     end
   end
 
-  ChostInfo = Struct.new(:chost) do
+  ChostInfo = Info.new(:chost) do
     def self.from_url(url)
       return unless url.match(%r|cohost.org|)
 
@@ -167,7 +162,7 @@ class Twumblr
     end
   end
 
-  TweetInfo = Struct.new(:tweet) do
+  TweetInfo = Info.new(:tweet) do
     def self.from_url(url)
       tweet_id = url.match(%r{(twitter|twittpr|x).com/\w*/status/(\d*)}){|m| m[2] }
       return nil unless tweet_id
@@ -234,9 +229,9 @@ class Twumblr
     def data
       case type
       when :video
-        {caption: "#{text} — #{source}", data: photo_data_from(videos), link: url}
+        {caption: "#{text} — #{source}", data: uploads_for(videos), link: url}
       when :photo
-        {caption: "#{text} — #{source}", data: photo_data_from(photos), link: url}
+        {caption: "#{text} — #{source}", data: uploads_for(photos), link: url}
       when :quote
         {quote: text, source: source, format: "markdown"}
       else
@@ -251,7 +246,7 @@ class Twumblr
     end
   end
 
-  PostInfo = Struct.new(:post) do
+  PostInfo = Info.new(:post) do
     def self.from_url(url)
       base, id = url.match(%r{(https?://.*?)/@.*/(\d+)}){|m| [m[1], m[2]] }
       return nil unless base && id
@@ -291,10 +286,10 @@ class Twumblr
 
     def data
       case type
-      when :photo
+      when :photo, :video
         {
           :caption => caption,
-          :data => photo_data,
+          :data => uploads_for(media_urls),
           :link => url
         }
       when :quote
@@ -304,18 +299,8 @@ class Twumblr
       end
     end
 
-    def photo_data
-      post.fetch("media_attachments", []).map do |m|
-        create_faraday_upload(m["url"])
-      end
-    end
-
-    def create_faraday_upload(url)
-      res = Faraday.get(url)
-      io = StringIO.new(res.body)
-      type = res.headers["content-type"]
-      filename = url.split("/").last
-      Faraday::UploadIO.new(io, type, filename)
+    def media_urls
+      post.fetch("media_attachments", []).map { |m| m["url"] }
     end
 
     def to_tumblr(tumblr)
@@ -323,42 +308,6 @@ class Twumblr
       return if ENV["DEBUG"]
       tumblr.send(type, ENV["TUMBLR_BLOG_URL"], data)
     end
-  end
-
-  def tumbl_post(info)
-    tweet = info.tweet
-
-    if tweet.quoted_tweet?
-      tumbl :text, body: info.quote_tweet_body, format: "html"
-    elsif tweet.media.any? && tweet.media.first.type == "video"
-      res = HTTP.get(tweet.media.first.video_info.variants.find do |v|
-        v.content_type == "video/mp4"
-      end.url.to_s)
-      tumbl :video,
-        :caption => info.caption,
-        :data => Faraday::UploadIO.new(StringIO.new(res.to_s), res.content_type.mime_type)
-    elsif tweet.media.any? # photo
-      tumbl :photo,
-        :caption => info.caption,
-        :data => photo_data_from(tweet.media),
-        :link => info.url
-    elsif tweet.urls.any? # link
-      link = tweet.urls.first.expanded_url
-      tumbl :link,
-        :url => follow_redirects(link),
-        :description => info.caption,
-        :title => title_at_url(link)
-    else # quote
-      tumbl :quote,
-        :quote => info.text,
-        :source => info.source
-    end
-  end
-
-  def tumbl(type, data = {})
-    puts "#{type}:\n#{data.inspect}"
-    return if ENV["DEBUG"]
-    tumblr.send(type, ENV["TUMBLR_BLOG_URL"], data)
   end
 
   def post
@@ -376,5 +325,4 @@ class Twumblr
 
     abort "Couldn't find a post! Looked in:\n\n#{@text}"
   end
-
 end
