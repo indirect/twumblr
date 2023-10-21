@@ -112,30 +112,32 @@ class Twumblr
     def self.from_url(url)
       return unless url.match(%r|cohost.org|)
 
-      require 'http'
-      state = HTTP.get(url).to_s.match(%r|trpc-dehydrated-state">(.+?)</script|){|m| m[1] }
-      trpc = JSON.parse(state)
-      chost = trpc["queries"].find{|q| q.dig("queryKey", 0, 1) == "singlePost" }.dig("state", "data", "post")
-      p chost if ENV["DEBUG"]
-      return unless chost
+      require "http"
+      page = HTTP.get(url).to_s.match(%r|(<head>.+</head>)|m){|m| m[1] }
+      return unless page
 
-      if chost["transparentShareOfPostId"]
-        new(chost["shareTree"].find{|h| h["postId"] == chost["transparentShareOfPostId"] })
-      else
-        new(chost)
-      end
+      require "ox"
+      elements = Ox.load(page, mode: :generic, effort: :tolerant, smart: true)
+      chost = elements.locate("*/meta[@property]").map{|m| [m.property, m.content] }.to_h
+
+      p chost if ENV["DEBUG"]
+      new(chost)
     end
 
     def url
-      chost["singlePostPageUrl"]
+      chost["og:url"]
     end
 
     def text
-      ["### #{chost["headline"]}", *chost["blocks"].flat_map{|b| b.dig("markdown", "content") }].join("\n\n")
+      chost["og:description"]
+    end
+
+    def handle
+      chost["og:image:alt"]
     end
 
     def source
-      %|<a href="#{url}">@#{chost.dig("postingProject", "handle")}</a>|
+      %|<a href="#{url}">@#{handle}</a>|
     end
 
     def caption
