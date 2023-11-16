@@ -39,10 +39,12 @@ class Twumblr
     def self.from_url(url)
       return unless url.match(%r{bsky\.app|skeeet\.xyz})
 
-      require "http"
+      # Remove skeet.xyz URL param if present
+      url.gsub!("?url=https://bsky.app/", "")
+
       uri = URI.parse(url)
-      post_uri = "https://skeeet.xyz#{uri.path}"
-      post = HTTP.get(post_uri).to_s
+      require "http"
+      post = HTTP.get("https://skeeet.xyz#{uri.path}").to_s
       require "ox"
       skeet = Ox.load(post, mode: :generic, effort: :tolerant, smart: true)
       new(skeet)
