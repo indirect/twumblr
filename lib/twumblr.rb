@@ -233,7 +233,7 @@ class Twumblr
     def data
       case type
       when :video
-        {caption: "#{text} — #{source}", data: uploads_for(videos), link: url}
+        {caption: "#{text} — #{source}", data: uploads_for(videos)}
       when :photo
         {caption: "#{text} — #{source}", data: uploads_for(photos), link: url}
       when :quote
@@ -290,12 +290,14 @@ class Twumblr
 
     def data
       case type
-      when :photo, :video
+      when :photo
         {
           :caption => caption,
           :data => uploads_for(media_urls),
           :link => url
         }
+      when :video
+        {:caption => caption, :data => uploads_for(media_urls)}
       when :quote
         {quote: text, source: source, format: "markdown"}
       else
