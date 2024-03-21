@@ -131,7 +131,9 @@ class Twumblr
     end
 
     def text
-      chost["og:description"]
+      text = chost.fetch("og:title", "")
+      text << "\n\n" if chost.key?("og:title")
+      text << chost["og:description"]
     end
 
     def handle
