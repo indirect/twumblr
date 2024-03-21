@@ -1,7 +1,6 @@
 FROM ruby:3.1.2-alpine as base
 
 ENV RACK_ENV="production" \
-    RUBY_YJIT_ENABLE="1" \
     BUNDLE_WITHOUT="development:test" \
     BUNDLE_DEPLOYMENT="1"
 
