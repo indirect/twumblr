@@ -1,5 +1,6 @@
 require "faraday"
 require "upmark"
+require "uri"
 
 class Info < Struct
   def uploads_for(urls)
@@ -44,7 +45,7 @@ class Twumblr
 
       uri = URI.parse(url)
       require "http"
-      post = HTTP.get("https://skeeet.xyz#{uri.path}").to_s
+      post = HTTP.get("https://dbsky.app#{uri.path}").to_s
       require "ox"
       skeet = Ox.load(post, mode: :generic, effort: :tolerant, smart: true)
       new(skeet)
