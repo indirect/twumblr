@@ -37,7 +37,7 @@ class Twumblr
 
   SkeetInfo = Info.new(:skeet) do
     def self.from_url(url)
-      return unless url.match(%r{bsky\.app|skeeet\.xyz})
+      return unless url.match(%r{bsky\.app|dbsky\.app})
 
       # Remove skeet.xyz URL param if present
       url.gsub!("?url=https://bsky.app/", "")
