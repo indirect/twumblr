@@ -41,7 +41,7 @@ class Twumblr
       return unless url.match(%r{bsky\.app|dbsky\.app})
 
       # Remove skeet.xyz URL param if present
-      url.gsub!("?url=https://bsky.app/", "")
+      url = url.gsub("?url=https://bsky.app/", "")
 
       uri = URI.parse(url)
       require "http"
