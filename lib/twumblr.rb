@@ -52,14 +52,14 @@ class Twumblr
     end
 
     def text
-      body = skeet.locate("*/section[@id=body]/?[@class=body-text]").first
+      body = skeet.locate("*/section[@id=body]/?[@class=body-text]").last
       text = body.nodes.map{|n| n.is_a?(String) ? n : Ox.dump(n) }.join
 
       "#{quote_text}#{text}"
     end
 
     def quote_text
-      body = skeet.locate("*/section[@class=quoted-post]/?[@class=body-text]").first
+      body = skeet.locate("*/section[@class=quoted-post]/?[@class=body-text]").last
       return unless body
 
       quote = "<blockquote><p>\n"
@@ -72,12 +72,12 @@ class Twumblr
     end
 
     def url
-      skeet.locate("*/a[@title]/@href").first
+      skeet.locate("*/a[@title]/@href").last
     end
 
     def attribution
-      name = skeet.locate("*/?[@class=display-name]/h1").first&.text
-      handle = skeet.locate("*/?[@class=display-name]/h2").first&.text
+      name = skeet.locate("*/?[@class=display-name]/h1").last&.text
+      handle = skeet.locate("*/?[@class=display-name]/h2").last&.text
       "#{name} (#{handle})"
     end
 
