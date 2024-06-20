@@ -25,5 +25,6 @@ RUN apk add git
 COPY --from=build /app/vendor/bundle /app/vendor/bundle
 COPY Gemfile* .ruby-version /app
 COPY lib /app/lib
+COPY bin/web /app/bin/
 
-CMD ["ruby", "-rbundler/setup", "-Ilib", "lib/web.rb"]
+CMD "./bin/web"
