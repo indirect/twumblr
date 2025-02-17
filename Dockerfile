@@ -7,7 +7,7 @@ ENV RACK_ENV="production" \
 RUN gem update --system --no-document && \
     gem install -N bundler
 
-FROM base as build
+FROM base AS build
 
 RUN apk add build-base git
 COPY Gemfile* .ruby-version .
@@ -27,4 +27,4 @@ COPY Gemfile* .ruby-version /app
 COPY lib /app/lib
 COPY bin/web /app/bin/
 
-CMD "./bin/web"
+CMD ["./bin/web"]
