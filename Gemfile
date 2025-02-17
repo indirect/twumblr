@@ -20,3 +20,5 @@ gem "reline", "~> 0.6.0"
 gem "sinatra", "~> 2.2"
 gem "tumblr_client", github: "indirect/tumblr_client", branch: "master"
 gem "upmark", "~> 1.0"
+
+gem "http", "~> 5.2"

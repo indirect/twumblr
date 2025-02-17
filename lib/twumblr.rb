@@ -1,4 +1,5 @@
 require "faraday"
+require "http"
 require "upmark"
 require "uri"
 
@@ -20,7 +21,6 @@ class Twumblr
   end
 
   def follow_redirects(url)
-    require 'http'
     res = HTTP.head(url)
     res = HTTP.head(res.headers['Location']) while res.headers['Location']
     res.uri.to_s
@@ -115,7 +115,6 @@ class Twumblr
     def self.from_url(url)
       return unless url.match(%r|cohost.org|)
 
-      require "http"
       page = HTTP.get(url).to_s.match(%r|(<head>.+</head>)|m){|m| m[1] }
       return unless page
 
