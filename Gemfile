@@ -17,3 +17,13 @@ gem "twitter", "~> 7.0", github: "sferik/twitter"
 gem "upmark", "~> 1.0"
 
 gem "ox", "~> 2.14"
+
+gem "base64", "~> 0.2.0"
+
+gem "ostruct", "~> 0.6.1"
+
+gem "bigdecimal", "~> 3.1"
+
+gem "logger", "~> 1.6"
+
+gem "reline", "~> 0.6.0"
