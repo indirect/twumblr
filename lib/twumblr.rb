@@ -5,7 +5,7 @@ require "uri"
 class Info < Struct
   def uploads_for(urls)
     urls.map do |u|
-      res = Faraday.get(u)
+      res = HTTP.follow.get(u)
       io = StringIO.new(res.body)
       type = res.headers["content-type"]
       filename = u.split("/").last
