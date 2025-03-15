@@ -254,12 +254,15 @@ class Twumblr
 
   PostInfo = Info.new(:post) do
     def self.from_url(url)
-      base, id = url.match(%r{(https?://.*?)/@.*/(\d+)}){|m| [m[1], m[2]] }
-      return nil unless base && id
+      page = HTTP.get(url).to_s.match(%r|(<head.+</head>)|m){|m| m[1] }
+      return unless page
 
-      require 'http'
-      post_uri = "#{base}/api/v1/statuses/#{id}"
-      post = HTTP.get(post_uri).parse
+      require "ox"
+      doc = Ox.load(page, mode: :generic, effort: :tolerant, smart: true)
+      post = doc.locate("*/meta").map do |m|
+        [m.attributes[:name], m.attributes[:content]]
+      end.to_h.compact.merge("url" => url)
+
       p post if ENV["DEBUG"]
       new(post)
     end
@@ -269,11 +272,11 @@ class Twumblr
     end
 
     def text
-      post["content"]
+      post["og:description"].gsub(/\n\(\d+ attachments?\)/, "")
     end
 
     def source
-      %|<a href="#{url}">@#{post.dig("account", "username")}</a>|
+      %|<a href="#{url}">@#{post["og:title"]}</a>|
     end
 
     def caption
@@ -281,9 +284,7 @@ class Twumblr
     end
 
     def type
-      if post.dig("media_attachments", 0, "type") == "video"
-        :video
-      elsif post.dig("media_attachments", 0, "type") == "image"
+      if post["og:image"]
         :photo
       else
         :quote
@@ -298,8 +299,6 @@ class Twumblr
           :data => uploads_for(media_urls),
           :link => url
         }
-      when :video
-        {:caption => caption, :data => uploads_for(media_urls)}
       when :quote
         {quote: text, source: source, format: "markdown"}
       else
@@ -308,7 +307,7 @@ class Twumblr
     end
 
     def media_urls
-      post.fetch("media_attachments", []).map { |m| m["url"] }
+      [post["og:image"]]
     end
 
     def to_tumblr(tumblr)
