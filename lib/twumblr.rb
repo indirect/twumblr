@@ -27,8 +27,12 @@ class Twumblr
   end
 
   def tumblr
+    self.class.client
+  end
+
+  def self.client
     require "tumblr_client"
-    @tumblr ||= Tumblr::Client.new(
+    @client ||= Tumblr::Client.new(
       :consumer_key => ENV["TUMBLR_CONSUMER_KEY"],
       :consumer_secret => ENV["TUMBLR_CONSUMER_SECRET_KEY"],
       :oauth_token => ENV["TUMBLR_OAUTH_TOKEN"],

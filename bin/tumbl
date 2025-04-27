@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "dotenv/load"
+require_relative "../lib/twumblr"
+require "pry"
+
+def main
+  raise "unknown post type" unless Twumblr.client.respond_to?(ARGV[0])
+  raise "file #{ARGV[1]} does not exist" unless File.exist?(ARGV[1])
+  post = Twumblr.client.send ARGV[0], ENV["TUMBLR_BLOG_URL"], data: ARGV[1]
+  puts "got post: #{post.inspect}"
+  return if ENV.key?("DEBUG")
+
+  return unless post && post.has_key?("id")
+  puts "https://" + File.join(ENV['TUMBLR_BLOG_URL'], "post", post["id"].to_s)
+rescue => e
+  ENV.key?("DEBUG") ? binding.pry : raise(e)
+end
+
+main
