@@ -5,13 +5,7 @@ require "uri"
 
 class Info < Struct
   def uploads_for(urls)
-    urls.map do |u|
-      res = HTTP.follow.get(u)
-      io = StringIO.new(res.body)
-      type = res.headers["content-type"]
-      filename = u.split("/").last
-      Faraday::UploadIO.new(io, type, filename)
-    end
+    urls.map { |u| Twumblr.upload_for(u) }
   end
 end
 
@@ -38,6 +32,14 @@ class Twumblr
       :oauth_token => ENV["TUMBLR_OAUTH_TOKEN"],
       :oauth_token_secret => ENV["TUMBLR_OAUTH_TOKEN_SECRET"]
     )
+  end
+
+  def self.upload_for(u)
+    res = HTTP.follow.get(u)
+    io = StringIO.new(res.body)
+    type = res.headers["content-type"]
+    filename = u.split("/").last
+    Faraday::UploadIO.new(io, type, filename)
   end
 
   SkeetInfo = Info.new(:skeet) do

@@ -30,6 +30,23 @@ class Web < Sinatra::Base
     post_url
   end
 
+  post "/photo" do
+    return 404 unless params["token"] == ENV['TOKEN']
+
+    photo_id = params.dig(:photo, :filename) || params[:url]
+    return 404 unless photo_id
+
+    post_url = posted?(photo_id)
+    return post_url if post_url
+
+    data = params.dig(:photo, :tempfile) || Twumblr.upload_for(params[:url])
+    post = Twumblr.client.photo(ENV["TUMBLR_BLOG_URL"], {data: data})
+
+    post_url(post).tap do |url|
+      mark_posted(params.dig(:photo, :filename), url)
+    end
+  end
+
   get "/message" do
     params[:s]
   end
