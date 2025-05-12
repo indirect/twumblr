@@ -221,11 +221,13 @@ class Twumblr
     end
 
     def text
-      post["og:description"].gsub(/\n\(\d+ attachments?\)/, "")
+      desc = post["og:description"] || post["description"] || ""
+      desc.gsub(/\n\(\d+ attachments?\)/, "")
     end
 
     def source
-      %|<a href="#{url}">@#{post["og:title"]}</a>|
+      name = post["og:title"] || post["misskey:user-username"]
+      name ? %|<a href="#{url}">@#{name}</a>| : ""
     end
 
     def caption
