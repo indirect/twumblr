@@ -117,63 +117,6 @@ class Twumblr
     end
   end
 
-  ChostInfo = Info.new(:chost) do
-    def self.from_url(url)
-      return unless url.match(%r|cohost.org|)
-
-      page = HTTP.get(url).to_s.match(%r|(<head>.+</head>)|m){|m| m[1] }
-      return unless page
-
-      require "ox"
-      elements = Ox.load(page, mode: :generic, effort: :tolerant, smart: true)
-      chost = elements.locate("*/meta[@property]").map{|m| [m.property, m.content] }.to_h
-
-      p chost if ENV["DEBUG"]
-      new(chost)
-    end
-
-    def url
-      chost["og:url"]
-    end
-
-    def text
-      text = chost.fetch("og:title", "")
-      text << "\n\n" if chost.key?("og:title")
-      text << chost["og:description"]
-    end
-
-    def handle
-      chost["og:image:alt"]
-    end
-
-    def source
-      %|<a href="#{url}">@#{handle}</a>|
-    end
-
-    def caption
-      [text, source].join(" — ")
-    end
-
-    def type
-      :quote
-    end
-
-    def data
-      case type
-      when :quote
-        {quote: text, source: source, format: "markdown"}
-      else
-        raise "unimplemented type #{type}!"
-      end
-    end
-
-    def to_tumblr(tumblr)
-      puts "#{type}:\n#{data.inspect}"
-      return if ENV["DEBUG"]
-      tumblr.send(type, ENV["TUMBLR_BLOG_URL"], data)
-    end
-  end
-
   TweetInfo = Info.new(:tweet) do
     def self.from_url(url)
       tweet_id = url.match(%r{(twitter|twittpr|x).com/\w*/status/(\d*)}){|m| m[2] }
@@ -326,9 +269,6 @@ class Twumblr
   def post
     skeet = SkeetInfo.from_url(@text)
     return skeet.to_tumblr(tumblr) if skeet
-
-    chost = ChostInfo.from_url(@text)
-    return chost.to_tumblr(tumblr) if chost
 
     tweet = TweetInfo.from_url(@text) || TweetInfo.from_url(follow_redirects(@text))
     return tweet.to_tumblr(tumblr) if tweet
