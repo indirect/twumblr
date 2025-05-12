@@ -12,8 +12,17 @@ class Web < Sinatra::Base
     require 'pry'
   end
 
+  configure :test do
+    require "mock_redis"
+    set :raise_errors, true
+    set :show_exceptions, false
+    set :redis, MockRedis.new
+  end
+
   post "/post" do
     return 404 unless params["token"] == ENV['TOKEN']
+    return 422 if email_body.nil? || email_body.empty?
+
     post_url = posted?(email_body)
     return post_url if post_url
 

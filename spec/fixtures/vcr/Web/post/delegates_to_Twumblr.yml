@@ -1,0 +1,332 @@
+---
+http_interactions:
+- request:
+    method: head
+    uri: https://transfem.social/notes/a7mgctvw8cub4i6v
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - transfem.social
+      User-Agent:
+      - http.rb/5.2.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Vary:
+      - Accept
+      Strict-Transport-Security:
+      - max-age=15552000; preload
+      X-Frame-Options:
+      - DENY
+      Cache-Control:
+      - public, max-age=15
+      X-Robots-Tag:
+      - noai
+      Content-Type:
+      - text/html; charset=utf-8
+      Content-Length:
+      - '29672'
+      Date:
+      - Mon, 12 May 2025 02:52:02 GMT
+      Keep-Alive:
+      - timeout=72
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Mon, 12 May 2025 02:52:02 GMT
+- request:
+    method: get
+    uri: https://transfem.social/notes/a7mgctvw8cub4i6v
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - transfem.social
+      User-Agent:
+      - http.rb/5.2.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Vary:
+      - Accept
+      Strict-Transport-Security:
+      - max-age=15552000; preload
+      X-Frame-Options:
+      - DENY
+      Cache-Control:
+      - public, max-age=15
+      X-Robots-Tag:
+      - noai
+      Content-Type:
+      - text/html; charset=utf-8
+      Content-Length:
+      - '29657'
+      Date:
+      - Mon, 12 May 2025 02:52:02 GMT
+      Keep-Alive:
+      - timeout=72
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE html><!---\n  _____ _                _\n /  ___| |              |
+        |\n \\ `--.| |__   __ _ _ __| | _____ _   _\n  `--. \\ '_ \\ / _` | '__| |/
+        / _ \\ | | |\n /\\__/ / | | | (_| | |  |   <  __/ |_| |\n \\____/|_| |_|\\__,_|_|
+        \ |_|\\_\\___|\\__, |\n                                   __/ |\n                                  |___/\n\n
+        Thank you for using Sharkey!\n If you are reading this message... how about
+        joining the development?\n https://activitypub.software/TransFem-org/Sharkey\n\n--><html><head><meta
+        charset=\"utf-8\"><meta name=\"application-name\" content=\"Sharkey\"><meta
+        name=\"referrer\" content=\"origin\"><meta name=\"theme-color\" content=\"#F7A8B8\"><meta
+        name=\"theme-color-orig\" content=\"#F7A8B8\"><meta property=\"og:site_name\"
+        content=\"TransFem Space\"><meta property=\"instance_url\" content=\"https://transfem.social\"><meta
+        name=\"viewport\" content=\"width=device-width, initial-scale=1\"><meta name=\"format-detection\"
+        content=\"telephone=no,date=no,address=no,email=no,url=no\"><link rel=\"icon\"
+        href=\"https://cdn.transfem.social/files/f0f8e8e5-8467-4b46-8884-83c4e9093e78.webp\"><link
+        rel=\"apple-touch-icon\" href=\"https://cdn.transfem.social/files/88aa10ed-2883-442f-8316-456512009fe4.webp\"><link
+        rel=\"manifest\" href=\"/manifest.json\"><link rel=\"search\" type=\"application/opensearchdescription+xml\"
+        title=\"faelif (@faelif)\" href=\"https://transfem.social/opensearch.xml\"><link
+        rel=\"prefetch\" href=\"https://cdn.transfem.social/files/fce74048-8cd3-411b-af3a-17dd928d97eb.webp\"><link
+        rel=\"prefetch\" href=\"https://cdn.transfem.social/files/fa71e2ed-3a44-4c49-b8ee-10b2ff3ebd8d.webp\"><link
+        rel=\"prefetch\" href=\"https://cdn.transfem.social/files/6b37ef22-cfc7-4bb9-b6cc-7d89419ccc5c.webp\"><link
+        rel=\"stylesheet\" href=\"/assets/phosphor-icons/bold/style.css?version=2025.2.3\"><link
+        rel=\"stylesheet\" href=\"/static-assets/fonts/sharkey-icons/style.css?version=2025.2.3\"><link
+        rel=\"modulepreload\" href=\"/vite/app-CHI3bXa8.js\"><link rel=\"stylesheet\"
+        href=\"/vite/CjWeOm3v.css\"><title>faelif (@faelif) | TransFem Space</title><meta
+        name=\"description\" content=\"@calcifer@masto.hackers.town \n\nYoung man,
+        there's no need to have RAM\nI said young man, you can simply program\nI said
+        young man, logic gates are my jam\nThere's no need for a CPU\n\nIt's fun to
+        program the FPGA\nIt's fun to program the FPGA\nIt has everything\nFor a Turing
+        machine\nYou can write out all your routines\n\nRE: Dammit I mentioned FPGA
+        and now I’m singing the initialism to the tune of “YMCA”\"><meta name=\"robots\"
+        content=\"noindex\"><meta name=\"robots\" content=\"noimageai\"><meta name=\"robots\"
+        content=\"noai\"><meta name=\"misskey:user-username\" content=\"faelif\"><meta
+        name=\"misskey:user-id\" content=\"a2nmh9p6wgu300l8\"><meta name=\"misskey:note-id\"
+        content=\"a7mgctvw8cub4i6v\"><!-- todo--><link rel=\"alternate\" href=\"https://transfem.social/notes/a7mgctvw8cub4i6v\"
+        type=\"application/activity+json\"><meta property=\"og:type\" content=\"article\"><meta
+        property=\"og:title\" content=\"faelif (@faelif)\"><meta property=\"og:description\"
+        content=\"@calcifer@masto.hackers.town \n\nYoung man, there's no need to have
+        RAM\nI said young man, you can simply program\nI said young man, logic gates
+        are my jam\nThere's no need for a CPU\n\nIt's fun to program the FPGA\nIt's
+        fun to program the FPGA\nIt has everything\nFor a Turing machine\nYou can
+        write out all your routines\n\nRE: Dammit I mentioned FPGA and now I’m singing
+        the initialism to the tune of “YMCA”\"><meta property=\"og:url\" content=\"https://transfem.social/notes/a7mgctvw8cub4i6v\"><meta
+        property=\"twitter:card\" content=\"summary\"><meta property=\"og:image\"
+        content=\"https://transfem.social/proxy/avatar.webp?url=https%3A%2F%2Fcdn.transfem.social%2Ffiles%2F96db9d2f-4740-4ab5-aa24-f8f5c9a5bfcf.webp&amp;avatar=1\"><style>html{background-color:var(--MI_THEME-bg);color:var(--MI_THEME-fg)}#splash{background-color:var(--MI_THEME-bg);cursor:wait;height:100vh;left:0;opacity:1;position:fixed;top:0;transition:opacity
+        .5s ease;width:100vw;z-index:10000}#splashIcon{height:64px;pointer-events:none;width:64px}#splashIcon,#splashSpinner{bottom:0;left:0;margin:auto;position:absolute;right:0;top:0}#splashSpinner{color:var(--MI_THEME-accent);display:inline-block;height:28px;transform:translateY(80px);width:28px}#splashSpinner>.spinner{height:28px;left:0;position:absolute;top:0;width:28px;fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5}#splashSpinner>.spinner.bg{opacity:.275}#splashSpinner>.spinner.fg{animation:splashSpinner
+        .5s linear infinite}@keyframes splashSpinner{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}#splashText{bottom:0;display:inline-block;height:0;left:0;margin:auto;position:absolute;right:0;text-align:center;top:0;transform:translateY(40px);width:70%}</style><script>var
+        VERSION = \"2025.2.3\";\nvar CLIENT_ENTRY = \"app-CHI3bXa8.js\";\n</script><script
+        type=\"application/json\" id=\"misskey_meta\" data-generated-at=\"1747018322937\">{\"maintainerName\":\"Admin\",\"maintainerEmail\":\"admins@transfem.org\",\"version\":\"2025.2.3\",\"providesTarball\":false,\"name\":\"TransFem
+        Space\",\"shortName\":\"TransFem\",\"uri\":\"https://transfem.social\",\"description\":\"TransFem
+        Space: A safe space for TransFem individuals and allies. Together, we build
+        a stronger community!\\n\\u003cbr\\u003e\\n\\u003cbr\\u003e\\nEveryone is
+        welcome as long as a signup reason is given. It should be a minimum of 1-2
+        sentences about you and why you're interested in our instance. An example:
+        \\\"I'm queer and I'd like to try out sharkey\\\". \\n\\u003cbr\\u003e\\n\\u003cbr\\u003e\\nBanner
+        Image made by @Gingeh@tech.lgbt\",\"langs\":[],\"tosUrl\":\"\",\"repositoryUrl\":\"https://activitypub.software/TransFem-org/Sharkey/\",\"feedbackUrl\":\"https://activitypub.software/TransFem-org/Sharkey/-/issues\",\"impressumUrl\":\"\",\"donationUrl\":\"\",\"privacyPolicyUrl\":\"\",\"inquiryUrl\":\"https://transfem.social/@admin/pages/1730121870231\",\"disableRegistration\":false,\"emailRequiredForSignup\":true,\"approvalRequiredForSignup\":true,\"enableHcaptcha\":false,\"hcaptchaSiteKey\":\"1ca2b433-4d71-4de5-8f6e-b8619f89d218\",\"enableMcaptcha\":false,\"mcaptchaSiteKey\":null,\"mcaptchaInstanceUrl\":null,\"enableRecaptcha\":false,\"enableAchievements\":true,\"robotsTxt\":null,\"recaptchaSiteKey\":null,\"enableTurnstile\":true,\"turnstileSiteKey\":\"0x4AAAAAAASaz0v88NSCHfRT\",\"enableFC\":false,\"fcSiteKey\":null,\"enableTestcaptcha\":false,\"swPublickey\":\"BLwHKdwNJUDkQ0XWuiHKD9-4Q6GUpL4UrRmQ-7RFhwAXdxWKoKra3KnUo7NxVGF7RknCcihiGd_ykzx8_3dYwWo\",\"themeColor\":\"#F7A8B8\",\"mascotImageUrl\":\"/static-assets/badges/info.png\",\"bannerUrl\":\"https://cdn.transfem.social/files/eb3649d9-6b87-44ee-bed3-99e9eb4271f4.webp\",\"infoImageUrl\":\"https://cdn.transfem.social/files/fa71e2ed-3a44-4c49-b8ee-10b2ff3ebd8d.webp\",\"serverErrorImageUrl\":\"https://cdn.transfem.social/files/fce74048-8cd3-411b-af3a-17dd928d97eb.webp\",\"notFoundImageUrl\":\"https://cdn.transfem.social/files/6b37ef22-cfc7-4bb9-b6cc-7d89419ccc5c.webp\",\"iconUrl\":\"https://cdn.transfem.social/files/f0f8e8e5-8467-4b46-8884-83c4e9093e78.webp\",\"sidebarLogoUrl\":\"https://cdn.transfem.social/files/8d858adb-1ee2-43e9-8595-de05a46d1373.webp\",\"backgroundImageUrl\":\"https://cdn.transfem.social/files/eb3649d9-6b87-44ee-bed3-99e9eb4271f4.webp\",\"logoImageUrl\":\"https://cdn.transfem.social/files/88aa10ed-2883-442f-8316-456512009fe4.webp\",\"maxNoteTextLength\":100000,\"maxRemoteNoteTextLength\":100000,\"maxCwLength\":500,\"maxRemoteCwLength\":5000,\"maxAltTextLength\":20000,\"maxRemoteAltTextLength\":100000,\"defaultLightTheme\":\"{\\\"base\\\":\\\"light\\\",\\\"desc\\\":\\\"Soho
+        vibes for Misskey, dawn edition\\\",\\\"name\\\":\\\"Rosé Pine Dawn + Figtree\\\",\\\"props\\\":{\\\"X2\\\":\\\":darken\\u003c2\\u003c@panel\\\",\\\"X3\\\":\\\"rgba(0,
+        0, 0, 0.05)\\\",\\\"X4\\\":\\\"rgba(0, 0, 0, 0.1)\\\",\\\"X5\\\":\\\"rgba(0,
+        0, 0, 0.05)\\\",\\\"X6\\\":\\\"rgba(0, 0, 0, 0.25)\\\",\\\"X7\\\":\\\"rgba(0,
+        0, 0, 0.05)\\\",\\\"X8\\\":\\\":lighten\\u003c5\\u003c@accent\\\",\\\"X9\\\":\\\":darken\\u003c5\\u003c@accent\\\",\\\"bg\\\":\\\"#faf4ed\\\",\\\"fg\\\":\\\"#575279\\\",\\\"X10\\\":\\\":alpha\\u003c0.4\\u003c@accent\\\",\\\"X11\\\":\\\"rgba(0,
+        0, 0, 0.1)\\\",\\\"X12\\\":\\\"rgba(0, 0, 0, 0.1)\\\",\\\"X13\\\":\\\"rgba(0,
+        0, 0, 0.15)\\\",\\\"X14\\\":\\\":alpha\\u003c0.5\\u003c@navBg\\\",\\\"X15\\\":\\\":alpha\\u003c0\\u003c@panel\\\",\\\"X16\\\":\\\":alpha\\u003c0.7\\u003c@panel\\\",\\\"X17\\\":\\\":alpha\\u003c0.8\\u003c@bg\\\",\\\"cwBg\\\":\\\"#b4637a\\\",\\\"cwFg\\\":\\\"#faf4ed\\\",\\\"link\\\":\\\"#56949f\\\",\\\"warn\\\":\\\"#ea9d34\\\",\\\"badge\\\":\\\"#31b1ce\\\",\\\"error\\\":\\\"#b4637a\\\",\\\"focus\\\":\\\":alpha\\u003c0.3\\u003c@accent\\\",\\\"navBg\\\":\\\"@panel\\\",\\\"navFg\\\":\\\"@fg\\\",\\\"panel\\\":\\\":lighten\\u003c3\\u003c@bg\\\",\\\"popup\\\":\\\":lighten\\u003c3\\u003c@panel\\\",\\\"accent\\\":\\\"#286983\\\",\\\"header\\\":\\\":alpha\\u003c0.7\\u003c@panel\\\",\\\"infoBg\\\":\\\"#f2e9e1\\\",\\\"infoFg\\\":\\\"#ea9d34\\\",\\\"renote\\\":\\\"#56949f\\\",\\\"shadow\\\":\\\"rgba(0,
+        0, 0, 0.1)\\\",\\\"divider\\\":\\\"rgba(0, 0, 0, 0.1)\\\",\\\"hashtag\\\":\\\"#ea9d34\\\",\\\"mention\\\":\\\"@accent\\\",\\\"modalBg\\\":\\\"rgba(0,
+        0, 0, 0.3)\\\",\\\"success\\\":\\\"#907aa9\\\",\\\"buttonBg\\\":\\\"rgba(0,
+        0, 0, 0.05)\\\",\\\"switchBg\\\":\\\"rgba(0, 0, 0, 0.15)\\\",\\\"acrylicBg\\\":\\\":alpha\\u003c0.5\\u003c@bg\\\",\\\"cwHoverBg\\\":\\\"#d7827e\\\",\\\"indicator\\\":\\\"@accent\\\",\\\"mentionMe\\\":\\\"@mention\\\",\\\"messageBg\\\":\\\"@bg\\\",\\\"navActive\\\":\\\"@accent\\\",\\\"accentedBg\\\":\\\":alpha\\u003c0.15\\u003c@accent\\\",\\\"codeNumber\\\":\\\"#0fbbbb\\\",\\\"codeString\\\":\\\"#b98710\\\",\\\"fgOnAccent\\\":\\\"#fffaf3\\\",\\\"infoWarnBg\\\":\\\"#f2e9e1\\\",\\\"infoWarnFg\\\":\\\"#b4637a\\\",\\\"navHoverFg\\\":\\\":darken\\u003c17\\u003c@fg\\\",\\\"codeBoolean\\\":\\\"#62b70c\\\",\\\"dateLabelFg\\\":\\\"@fg\\\",\\\"fontFaceSrc\\\":\\\"url(https://cdn.transfem.social/files/bcfa6a33-0f0f-4765-9fec-f0634b06bab7)
+        format('truetype')\\\",\\\"inputBorder\\\":\\\"rgba(0, 0, 0, 0.1)\\\",\\\"panelBorder\\\":\\\"\\\\\\\"
+        solid 1px var(--divider)\\\",\\\"accentDarken\\\":\\\":darken\\u003c10\\u003c@accent\\\",\\\"acrylicPanel\\\":\\\":alpha\\u003c0.5\\u003c@panel\\\",\\\"navIndicator\\\":\\\"@indicator\\\",\\\"accentLighten\\\":\\\":lighten\\u003c10\\u003c@accent\\\",\\\"buttonHoverBg\\\":\\\"rgba(0,
+        0, 0, 0.1)\\\",\\\"driveFolderBg\\\":\\\":alpha\\u003c0.3\\u003c@accent\\\",\\\"fgHighlighted\\\":\\\":darken\\u003c3\\u003c@fg\\\",\\\"fgTransparent\\\":\\\":alpha\\u003c0.5\\u003c@fg\\\",\\\"panelHeaderBg\\\":\\\":lighten\\u003c3\\u003c@panel\\\",\\\"panelHeaderFg\\\":\\\"@fg\\\",\\\"buttonGradateA\\\":\\\"#d7827e\\\",\\\"buttonGradateB\\\":\\\":hue\\u003c20\\u003c#d7827e\\\",\\\"htmlThemeColor\\\":\\\"@bg\\\",\\\"panelHighlight\\\":\\\":darken\\u003c3\\u003c@panel\\\",\\\"listItemHoverBg\\\":\\\"rgba(0,
+        0, 0, 0.03)\\\",\\\"scrollbarHandle\\\":\\\"rgba(0, 0, 0, 0.2)\\\",\\\"inputBorderHover\\\":\\\"rgba(0,
+        0, 0, 0.2)\\\",\\\"wallpaperOverlay\\\":\\\"rgba(255, 255, 255, 0.5)\\\",\\\"fgTransparentWeak\\\":\\\":alpha\\u003c0.75\\u003c@fg\\\",\\\"panelHeaderDivider\\\":\\\"rgba(0,
+        0, 0, 0)\\\",\\\"scrollbarHandleHover\\\":\\\"rgba(0, 0, 0, 0.4)\\\"},\\\"author\\\":\\\"@thatonecalculator@stop.voring.me\\\"}\",\"defaultDarkTheme\":\"{\\\"base\\\":\\\"dark\\\",\\\"desc\\\":\\\"Soho
+        vibes for Misskey + Figtree\\\",\\\"name\\\":\\\"Rosé Pine v3\\\",\\\"props\\\":{\\\"X2\\\":\\\":darken\\u003c2\\u003c@panel\\\",\\\"X3\\\":\\\"rgba(255,
+        255, 255, 0.05)\\\",\\\"X4\\\":\\\"rgba(255, 255, 255, 0.1)\\\",\\\"X5\\\":\\\"rgba(255,
+        255, 255, 0.05)\\\",\\\"X6\\\":\\\"rgba(255, 255, 255, 0.15)\\\",\\\"X7\\\":\\\"rgba(255,
+        255, 255, 0.05)\\\",\\\"X8\\\":\\\":lighten\\u003c5\\u003c@accent\\\",\\\"X9\\\":\\\":darken\\u003c5\\u003c@accent\\\",\\\"bg\\\":\\\"#191724\\\",\\\"fg\\\":\\\"#e0def4\\\",\\\"X10\\\":\\\":alpha\\u003c0.4\\u003c@accent\\\",\\\"X11\\\":\\\"rgba(0,
+        0, 0, 0.3)\\\",\\\"X12\\\":\\\"rgba(255, 255, 255, 0.1)\\\",\\\"X13\\\":\\\"rgba(255,
+        255, 255, 0.15)\\\",\\\"X14\\\":\\\":alpha\\u003c0.5\\u003c@navBg\\\",\\\"X15\\\":\\\":alpha\\u003c0\\u003c@panel\\\",\\\"X16\\\":\\\":alpha\\u003c0.7\\u003c@panel\\\",\\\"X17\\\":\\\":alpha\\u003c0.8\\u003c@bg\\\",\\\"cwBg\\\":\\\"#1f1d2e\\\",\\\"cwFg\\\":\\\"#f6c177\\\",\\\"link\\\":\\\"#9ccfd8\\\",\\\"warn\\\":\\\"#f6c177\\\",\\\"badge\\\":\\\"#ebbcba\\\",\\\"error\\\":\\\"#eb6f92\\\",\\\"focus\\\":\\\":alpha\\u003c0.3\\u003c@accent\\\",\\\"navBg\\\":\\\"@panel\\\",\\\"navFg\\\":\\\"@fg\\\",\\\"panel\\\":\\\":lighten\\u003c3\\u003c@bg\\\",\\\"popup\\\":\\\":lighten\\u003c3\\u003c@panel\\\",\\\"accent\\\":\\\"#c4a7e7\\\",\\\"header\\\":\\\":alpha\\u003c0.7\\u003c@panel\\\",\\\"infoBg\\\":\\\"#253142\\\",\\\"infoFg\\\":\\\"#fff\\\",\\\"renote\\\":\\\"#31748f\\\",\\\"shadow\\\":\\\"rgba(0,
+        0, 0, 0.3)\\\",\\\"divider\\\":\\\"rgba(255, 255, 255, 0.1)\\\",\\\"hashtag\\\":\\\"#ebbcba\\\",\\\"mention\\\":\\\"@accent\\\",\\\"modalBg\\\":\\\"rgba(0,
+        0, 0, 0.5)\\\",\\\"success\\\":\\\"#ebbcba\\\",\\\"buttonBg\\\":\\\"rgba(255,
+        255, 255, 0.05)\\\",\\\"switchBg\\\":\\\"rgba(255, 255, 255, 0.15)\\\",\\\"acrylicBg\\\":\\\":alpha\\u003c0.5\\u003c@bg\\\",\\\"cwHoverBg\\\":\\\"#26233a\\\",\\\"indicator\\\":\\\"@accent\\\",\\\"mentionMe\\\":\\\"@mention\\\",\\\"messageBg\\\":\\\"@bg\\\",\\\"navActive\\\":\\\"@accent\\\",\\\"accentedBg\\\":\\\":alpha\\u003c0.15\\u003c@accent\\\",\\\"fgOnAccent\\\":\\\"#26233a\\\",\\\"infoWarnBg\\\":\\\"#26233a\\\",\\\"infoWarnFg\\\":\\\"#f6c177\\\",\\\"navHoverFg\\\":\\\":lighten\\u003c17\\u003c@fg\\\",\\\"dateLabelFg\\\":\\\"@fg\\\",\\\"fontFaceSrc\\\":\\\"url(https://cdn.transfem.social/files/bcfa6a33-0f0f-4765-9fec-f0634b06bab7)
+        format('truetype')\\\",\\\"inputBorder\\\":\\\"rgba(255, 255, 255, 0.1)\\\",\\\"panelBorder\\\":\\\"\\\\\\\"
+        solid 1px var(--divider)\\\",\\\"accentDarken\\\":\\\":darken\\u003c10\\u003c@accent\\\",\\\"acrylicPanel\\\":\\\":alpha\\u003c0.5\\u003c@panel\\\",\\\"navIndicator\\\":\\\"@indicator\\\",\\\"accentLighten\\\":\\\":lighten\\u003c10\\u003c@accent\\\",\\\"buttonHoverBg\\\":\\\"rgba(255,
+        255, 255, 0.1)\\\",\\\"driveFolderBg\\\":\\\":alpha\\u003c0.3\\u003c@accent\\\",\\\"fgHighlighted\\\":\\\":lighten\\u003c3\\u003c@fg\\\",\\\"fgTransparent\\\":\\\":alpha\\u003c0.5\\u003c@fg\\\",\\\"panelHeaderBg\\\":\\\":lighten\\u003c3\\u003c@panel\\\",\\\"panelHeaderFg\\\":\\\"@fg\\\",\\\"buttonGradateA\\\":\\\"@accent\\\",\\\"buttonGradateB\\\":\\\"#ebbcba\\\",\\\"htmlThemeColor\\\":\\\"@bg\\\",\\\"panelHighlight\\\":\\\":lighten\\u003c3\\u003c@panel\\\",\\\"listItemHoverBg\\\":\\\"rgba(255,
+        255, 255, 0.03)\\\",\\\"scrollbarHandle\\\":\\\"rgba(255, 255, 255, 0.2)\\\",\\\"inputBorderHover\\\":\\\"rgba(255,
+        255, 255, 0.2)\\\",\\\"wallpaperOverlay\\\":\\\"rgba(0, 0, 0, 0.5)\\\",\\\"fgTransparentWeak\\\":\\\":alpha\\u003c0.75\\u003c@fg\\\",\\\"panelHeaderDivider\\\":\\\"rgba(0,
+        0, 0, 0)\\\",\\\"scrollbarHandleHover\\\":\\\"rgba(255, 255, 255, 0.4)\\\"},\\\"author\\\":\\\"@thatonecalculator@stop.voring.me\\\"}\",\"defaultLike\":\"❤️\",\"ads\":[],\"trustedLinkUrlPatterns\":[],\"notesPerOneAd\":0,\"enableEmail\":true,\"enableServiceWorker\":true,\"translatorAvailable\":true,\"serverRules\":[\"Treat
+        all members with kindness, respect, and empathy, regardless of their gender
+        identity, sexual orientation, race, ethnicity, religion, or beliefs.\",\"Refrain
+        from engaging in any form of discrimination, hate speech, or harassment. We
+        have zero tolerance for any behavior that undermines the dignity of others.\",\"Use
+        content warnings for any explicit, offensive, or graphic content that may
+        be distressing or inappropriate for the community. Content warnings help create
+        a safe environment by allowing users to make informed decisions about the
+        content they choose to engage with.\",\"Engage in constructive and respectful
+        discussions with fellow members.\",\"Be open to different perspectives and
+        opinions while maintaining a respectful tone.\",\"Respect the privacy of other
+        users and refrain from sharing personal information without their explicit
+        consent.\",\"Bullying, or any form of harassment is strictly prohibited. Treat
+        others as you would like to be treated.\",\"Respect copyright and intellectual
+        property rights. Only post content that you have the right to use and share.\",\"Do
+        not use Transfem.social for spamming or promoting commercial products or services
+        without prior authorization.\",\"Abide by all applicable laws and regulations
+        in the United States of America while using our platform.\",\"If you encounter
+        any content or behavior that violates our guidelines, please report it to
+        our moderation team.\",\"Do not impersonate anyone, unless you are doing it
+        for parody and you make it clear that it's parody\",\"You must be atleast
+        18 years old to be able to join this platform\"],\"policies\":{\"gtlAvailable\":true,\"ltlAvailable\":true,\"btlAvailable\":true,\"canPublicNote\":true,\"scheduleNoteMax\":100000,\"mentionLimit\":25,\"canInvite\":false,\"inviteLimit\":0,\"inviteLimitCycle\":10080,\"inviteExpirationTime\":0,\"canManageCustomEmojis\":false,\"canManageAvatarDecorations\":false,\"canSearchNotes\":true,\"canUseTranslator\":true,\"canHideAds\":false,\"driveCapacityMb\":15000,\"alwaysMarkNsfw\":false,\"canUpdateBioMedia\":true,\"pinLimit\":50,\"antennaLimit\":5,\"wordMuteLimit\":100000,\"webhookLimit\":3,\"clipLimit\":50,\"noteEachClipsLimit\":500,\"userListLimit\":50,\"userEachUserListsLimit\":500,\"rateLimitFactor\":1,\"canImportNotes\":true,\"avatarDecorationLimit\":100000,\"canImportAntennas\":true,\"canImportBlocking\":true,\"canImportFollowing\":true,\"canImportMuting\":true,\"canImportUserLists\":true},\"mediaProxy\":\"https://transfem.social/proxy\",\"enableUrlPreview\":true,\"noteSearchableScope\":\"global\",\"maxFileSize\":2097152000,\"federation\":\"all\",\"cacheRemoteFiles\":false,\"cacheRemoteSensitiveFiles\":false,\"requireSetup\":false,\"proxyAccountName\":\"transfemproxy\",\"features\":{\"localTimeline\":true,\"globalTimeline\":true,\"registration\":true,\"emailRequiredForSignup\":true,\"hcaptcha\":false,\"recaptcha\":false,\"turnstile\":true,\"objectStorage\":true,\"serviceWorker\":true,\"miauth\":true}}</script><script
+        type=\"application/json\" id=\"misskey_clientCtx\" data-generated-at=\"1747018322937\">{\"note\":{\"id\":\"a7mgctvw8cub4i6v\",\"createdAt\":\"2025-05-11T00:00:45.644Z\",\"userId\":\"a2nmh9p6wgu300l8\",\"user\":{\"id\":\"a2nmh9p6wgu300l8\",\"name\":\"faelif\",\"username\":\"faelif\",\"host\":null,\"avatarUrl\":\"https://transfem.social/proxy/avatar.webp?url=https%3A%2F%2Fcdn.transfem.social%2Ffiles%2F96db9d2f-4740-4ab5-aa24-f8f5c9a5bfcf.webp\\u0026avatar=1\",\"avatarBlurhash\":\"eIF~H$t7_NoM-;OGxa%0M|IV_3kBj=agE2-:jrW=M|%1RQa$IUV@t7\",\"description\":\"faelif
+        aka Ava. 18. Studying for A-levels. UK. Some-time computer toucher. Transfemme.
+        Beginner tokiponist.\\n\\nHappy to accept follow requests, I just like to
+        know who's following me!\\n\\nAlso @faelif@mathstodon.xyz and @faelif@bookwyrm.social\",\"createdAt\":\"2025-01-05T20:21:24.954Z\",\"avatarDecorations\":[],\"isBot\":false,\"isCat\":false,\"noindex\":false,\"enableRss\":true,\"mandatoryCW\":null,\"rejectQuotes\":false,\"isSilenced\":false,\"speakAsCat\":true,\"approved\":true,\"followersCount\":0,\"followingCount\":0,\"notesCount\":117,\"emojis\":{},\"onlineStatus\":\"unknown\",\"badgeRoles\":[]},\"text\":\"@calcifer@masto.hackers.town
+        \\n\\nYoung man, there's no need to have RAM\\nI said young man, you can simply
+        program\\nI said young man, logic gates are my jam\\nThere's no need for a
+        CPU\\n\\nIt's fun to program the FPGA\\nIt's fun to program the FPGA\\nIt
+        has everything\\nFor a Turing machine\\nYou can write out all your routines\",\"cw\":null,\"visibility\":\"public\",\"localOnly\":false,\"reactionAcceptance\":null,\"renoteCount\":371,\"repliesCount\":15,\"reactionCount\":506,\"reactions\":{\"❤\":495,\"\U0001F496\":1,\"\U0001F49C\":1,\"\U0001F923\":1,\":awawawa@lea.pet:\":1,\":bunhdheart@blahaj.zone:\":1,\":neocat_heart@blahaj.zone:\":1,\":pride_heart@gaysex.cloud:\":1,\":menheramusic@lazygeek.cafe:\":1,\":menhera_music@kitsunes.club:\":1,\":neobot_heart_cyan@mk.moth.zone:\":1,\":black_sparkling_heart@fire.asta.lgbt:\":1},\"reactionEmojis\":{\"awawawa@lea.pet\":\"https://api.s3.lea.pet/lea.pet///99c283a5-17a1-4220-a3af-637d06a496a2.png\",\"bunhdheart@blahaj.zone\":\"https://cdn.blahaj.zone/files/475a8a87-d77d-4736-9ee8-2883df98f328\",\"neocat_heart@blahaj.zone\":\"https://cdn.blahaj.zone/files/12dd0269-f0a6-4904-846f-aedf6b752704\",\"pride_heart@gaysex.cloud\":\"https://gaysex.cloud/files/48cc7116-a4c5-4ab7-a101-6b34a7e155c4\",\"menheramusic@lazygeek.cafe\":\"https://lazygeek.cafe/emoji/menhera/menheramusic.png\",\"menhera_music@kitsunes.club\":\"https://s3.kitsunes.club/storage/9e83809e-77fb-4dbc-bf6a-5debc2361c2a.png\",\"neobot_heart_cyan@mk.moth.zone\":\"https://mk.moth.zone/files/aab1e486-e9a6-4a9a-8e8f-a6104486cace\",\"black_sparkling_heart@fire.asta.lgbt\":\"https://sharkey-data.sjc1.vultrobjects.com//f98a4ec4-a4fd-4b51-8406-c46b98889684.png\"},\"fileIds\":[],\"files\":[],\"replyId\":\"a7me3dag0fsfeloc\",\"renoteId\":null,\"mentions\":[\"a6kpzgiqdferbp0w\"],\"clippedCount\":0,\"processErrors\":null,\"reply\":{\"id\":\"a7me3dag0fsfeloc\",\"createdAt\":\"2025-05-10T22:57:25.000Z\",\"userId\":\"a6kpzgiqdferbp0w\",\"user\":{\"id\":\"a6kpzgiqdferbp0w\",\"name\":\"calcifer
+        :nes_fire:\",\"username\":\"calcifer\",\"host\":\"masto.hackers.town\",\"avatarUrl\":\"https://transfem.social/proxy/avatar.webp?url=https%3A%2F%2Fcdn.masto.host%2Fmastohackerstown%2Faccounts%2Favatars%2F114%2F325%2F241%2F528%2F133%2F639%2Foriginal%2F85d20eaf641d1c1d.jpeg\\u0026avatar=1\",\"avatarBlurhash\":\"e7NtaO^O02w13N03NH0}JRRk03n+qATH:=^aWU}?af-A1va}+cNc$O\",\"description\":\"Migrated
+        from @calcifer@hackers.town on 2025-04-14; original hackers.town join date
+        is 2020-05-11\\n\\nFriendly local fire demon. Arduino and LED fiddler. Microcomputing
+        enthusiast. Tech should enhance and enable humans, not control or degrade
+        them. Old, but not stagnant.\\n\\n*sic non rumpitur, erit*\\n*cornu omnem
+        aream*\",\"createdAt\":\"2025-04-14T14:15:03.266Z\",\"avatarDecorations\":[],\"isBot\":false,\"isCat\":false,\"noindex\":false,\"enableRss\":false,\"mandatoryCW\":null,\"rejectQuotes\":false,\"isSilenced\":false,\"speakAsCat\":false,\"approved\":true,\"instance\":{\"name\":\"Hackers.town\",\"softwareName\":\"mastodon\",\"softwareVersion\":\"4.3.8\",\"iconUrl\":\"https://cdn.masto.host/mastohackerstown/site_uploads/files/000/000/002/36/ff09d65dcbc846bb.png\",\"faviconUrl\":\"https://cdn.masto.host/mastohackerstown/site_uploads/files/000/000/003/48/efa08fb4cb5a2fe5.png\",\"themeColor\":\"#181820\"},\"followersCount\":0,\"followingCount\":0,\"notesCount\":189,\"emojis\":{\"nes_fire\":\"https://cdn.masto.host/mastohackerstown/custom_emojis/images/000/005/552/original/d10540498b020f36.png\"},\"onlineStatus\":\"unknown\"},\"text\":\"Dammit
+        I mentioned FPGA and now I’m singing the initialism to the tune of “YMCA”\",\"cw\":null,\"visibility\":\"public\",\"localOnly\":false,\"reactionAcceptance\":null,\"renoteCount\":11,\"repliesCount\":3,\"reactionCount\":14,\"reactions\":{\"❤\":11,\"\U0001F49C\":1,\":bunhdheart@blahaj.zone:\":1,\":black_sparkling_heart@fire.asta.lgbt:\":1},\"reactionEmojis\":{\"bunhdheart@blahaj.zone\":\"https://cdn.blahaj.zone/files/475a8a87-d77d-4736-9ee8-2883df98f328\",\"black_sparkling_heart@fire.asta.lgbt\":\"https://sharkey-data.sjc1.vultrobjects.com//f98a4ec4-a4fd-4b51-8406-c46b98889684.png\"},\"emojis\":{},\"fileIds\":[],\"files\":[],\"replyId\":null,\"renoteId\":null,\"uri\":\"https://masto.hackers.town/users/calcifer/statuses/114486007891622319\",\"url\":\"https://masto.hackers.town/@calcifer/114486007891622319\"}}}</script><script>\"use
+        strict\";(async()=>{if(window.onerror=t=>{console.error(t),d(\"SOMETHING_HAPPENED\",t)},window.onunhandledrejection=t=>{console.error(t),d(\"SOMETHING_HAPPENED_IN_PROMISE\",t)},null!=localStorage.getItem(\"forceError\"))return
+        void d(\"FORCED_ERROR\",\"This error is forced by having forceError in local
+        storage.\");const t=\"4mB0ErLkcIws8dF3SVGXrA\",n=localStorage.getItem(\"localeVersion\");if(n!==t&&(console.info(`Updating
+        locales from version ${n??\"N/A\"} to ${t}`),localStorage.removeItem(\"localeVersion\"),localStorage.removeItem(\"locale\")),!localStorage.getItem(\"locale\")){const
+        n=[\"ar-SA\",\"ca-ES\",\"cs-CZ\",\"da-DK\",\"de-DE\",\"en-US\",\"es-ES\",\"fr-FR\",\"id-ID\",\"it-IT\",\"ja-JP\",\"ja-KS\",\"kab-KAB\",\"kn-IN\",\"ko-KR\",\"nl-NL\",\"no-NO\",\"pl-PL\",\"pt-PT\",\"ru-RU\",\"sk-SK\",\"th-TH\",\"ug-CN\",\"uk-UA\",\"vi-VN\",\"zh-CN\",\"zh-TW\"];let
+        e=localStorage.getItem(\"lang\");null!=e&&n.includes(e)||(n.includes(navigator.language)?e=navigator.language:(e=n.find((t=>t.split(\"-\")[0]===navigator.language.split(\"-\")[0])),null==e&&(e=\"en-US\"))),null!=e&&null!=e.toString&&\"null\"!==e.toString()||(console.error(\"invalid
+        lang value detected!!!\",typeof e,e),e=\"en-US\");const o=await window.fetch(`/assets/locales/${e}.${t}.json`);if(200!==o.status)return
+        void d(\"LOCALE_FETCH\");localStorage.setItem(\"lang\",e),localStorage.setItem(\"locale\",await
+        o.text()),localStorage.setItem(\"localeVersion\",t)}async function e(){await
+        import(`/vite/${CLIENT_ENTRY}`).catch((async t=>{console.error(t),d(\"APP_IMPORT\",t)}))}\"loading\"!==document.readyState?e():window.addEventListener(\"DOMContentLoaded\",(()=>{e()}));const
+        o=localStorage.getItem(\"theme\"),a=\"sharkey-theme-font-face\";if(o){let
+        t;document.fonts.forEach((n=>{n.family===a&&(t=n)})),t&&document.fonts.delete(t);const
+        n=JSON.parse(o),e=n.fontFaceSrc,r=n.fontFaceOpts||{};if(e){const t=new FontFace(a,e,r||{});document.fonts.add(t),t.load().catch((t=>{console.log(t)}))}for(const[t,e]of
+        Object.entries(n))if(!t.startsWith(\"font\")&&(document.documentElement.style.setProperty(`--MI_THEME-${t}`,e.toString()),\"htmlThemeColor\"===t))for(const
+        t of document.head.children)if(\"META\"===t.tagName&&\"theme-color\"===t.getAttribute(\"name\")){t.setAttribute(\"content\",e);break}}const
+        r=localStorage.getItem(\"colorScheme\");r&&document.documentElement.style.setProperty(\"color-scheme\",r);const
+        l=localStorage.getItem(\"fontSize\");l&&document.documentElement.classList.add(\"f-\"+l);const
+        s=localStorage.getItem(\"cornerRadius\");s&&document.documentElement.classList.add(`radius-${s}`);localStorage.getItem(\"useSystemFont\")&&document.documentElement.classList.add(\"useSystemFont\");const
+        c=localStorage.getItem(\"wallpaper\");c&&(document.documentElement.style.backgroundImage=`url(${c})`);const
+        i=localStorage.getItem(\"customCss\");if(i&&i.length>0){const t=document.createElement(\"style\");t.innerHTML=i,document.head.appendChild(t)}async
+        function d(t,n){\"loading\"===document.readyState&&await new Promise((t=>window.addEventListener(\"DOMContentLoaded\",t)));let
+        e=document.getElementById(\"errors\");e||(document.body.innerHTML='\\n\\t\\t\\t<svg
+        class=\"icon-warning\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0
+        24 24\" stroke-width=\"2\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\"
+        stroke-linejoin=\"round\">\\n\\t\\t\\t\\t<path stroke=\"none\" d=\"M0 0h24v24H0z\"
+        fill=\"none\"></path>\\n\\t\\t\\t\\t<path d=\"M12 9v2m0 4v.01\"></path>\\n\\t\\t\\t\\t<path
+        d=\"M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2
+        2 0 0 0 1.75 2.75\"></path>\\n\\t\\t\\t</svg>\\n\\t\\t\\t<h1>Failed to load<br>読み込みに失敗しました</h1>\\n\\t\\t\\t<button
+        class=\"button-big\" onclick=\"location.reload(true);\">\\n\\t\\t\\t\\t<span
+        class=\"button-label-big\">Reload / リロード</span>\\n\\t\\t\\t</button>\\n\\t\\t\\t<p><b>The
+        following actions may solve the problem. / 以下を行うと解決する可能性があります。</b></p>\\n\\t\\t\\t<p>Update
+        your os and browser / ブラウザおよびOSを最新バージョンに更新する</p>\\n\\t\\t\\t<p>Disable an
+        adblocker / アドブロッカーを無効にする</p>\\n\\t\\t\\t<p>Clear the browser cache / ブラウザのキャッシュをクリアする</p>\\n\\t\\t\\t<p>&#40;Tor
+        Browser&#41; Set dom.webaudio.enabled to true / dom.webaudio.enabledをtrueに設定する</p>\\n\\t\\t\\t<details
+        style=\"color: #86b300;\">\\n\\t\\t\\t\\t<summary>Other options / その他のオプション</summary>\\n\\t\\t\\t\\t<a
+        href=\"/flush\">\\n\\t\\t\\t\\t\\t<button class=\"button-small\">\\n\\t\\t\\t\\t\\t\\t<span
+        class=\"button-label-small\">Clear preferences and cache</span>\\n\\t\\t\\t\\t\\t</button>\\n\\t\\t\\t\\t</a>\\n\\t\\t\\t\\t<br>\\n\\t\\t\\t\\t<a
+        href=\"/cli\">\\n\\t\\t\\t\\t\\t<button class=\"button-small\">\\n\\t\\t\\t\\t\\t\\t<span
+        class=\"button-label-small\">Start the simple client</span>\\n\\t\\t\\t\\t\\t</button>\\n\\t\\t\\t\\t</a>\\n\\t\\t\\t\\t<br>\\n\\t\\t\\t\\t<a
+        href=\"/bios\">\\n\\t\\t\\t\\t\\t<button class=\"button-small\">\\n\\t\\t\\t\\t\\t\\t<span
+        class=\"button-label-small\">Start the repair tool</span>\\n\\t\\t\\t\\t\\t</button>\\n\\t\\t\\t\\t</a>\\n\\t\\t\\t</details>\\n\\t\\t\\t<br>\\n\\t\\t\\t<div
+        id=\"errors\"></div>\\n\\t\\t\\t',e=document.getElementById(\"errors\"));const
+        o=document.createElement(\"details\");o.id=\"errorInfo\",o.innerHTML=`\\n\\t\\t<br>\\n\\t\\t<summary>\\n\\t\\t\\t<code>ERROR
+        CODE: ${t}</code>\\n\\t\\t</summary>\\n\\t\\t<code>${n.toString()} ${JSON.stringify(n)}</code>`,e.appendChild(o),async
+        function(t){let n=document.createElement(\"style\");n.appendChild(document.createTextNode(t)),document.head.appendChild(n)}(\"\\n\\t\\t*
+        {\\n\\t\\t\\tfont-family: BIZ UDGothic, Roboto, HelveticaNeue, Arial, sans-serif;\\n\\t\\t}\\n\\n\\t\\t#sharkey_app,\\n\\t\\t#splash
+        {\\n\\t\\t\\tdisplay: none !important;\\n\\t\\t}\\n\\n\\t\\tbody,\\n\\t\\thtml
+        {\\n\\t\\t\\tbackground-color: #222;\\n\\t\\t\\tcolor: #dfddcc;\\n\\t\\t\\tjustify-content:
+        center;\\n\\t\\t\\tmargin: auto;\\n\\t\\t\\tpadding: 10px;\\n\\t\\t\\ttext-align:
+        center;\\n\\t\\t}\\n\\n\\t\\tbutton {\\n\\t\\t\\tborder-radius: 999px;\\n\\t\\t\\tpadding:
+        0px 12px 0px 12px;\\n\\t\\t\\tborder: none;\\n\\t\\t\\tcursor: pointer;\\n\\t\\t\\tmargin-bottom:
+        12px;\\n\\t\\t}\\n\\n\\t\\t.button-big {\\n\\t\\t\\tbackground: linear-gradient(90deg,
+        rgb(134, 179, 0), rgb(74, 179, 0));\\n\\t\\t\\tline-height: 50px;\\n\\t\\t}\\n\\n\\t\\t.button-big:hover
+        {\\n\\t\\t\\tbackground: rgb(153, 204, 0);\\n\\t\\t}\\n\\n\\t\\t.button-small
+        {\\n\\t\\t\\tbackground: #444;\\n\\t\\t\\tline-height: 40px;\\n\\t\\t}\\n\\n\\t\\t.button-small:hover
+        {\\n\\t\\t\\tbackground: #555;\\n\\t\\t}\\n\\n\\t\\t.button-label-big {\\n\\t\\t\\tcolor:
+        #222;\\n\\t\\t\\tfont-weight: bold;\\n\\t\\t\\tfont-size: 1.2em;\\n\\t\\t\\tpadding:
+        12px;\\n\\t\\t}\\n\\n\\t\\t.button-label-small {\\n\\t\\t\\tcolor: rgb(153,
+        204, 0);\\n\\t\\t\\tfont-size: 16px;\\n\\t\\t\\tpadding: 12px;\\n\\t\\t}\\n\\n\\t\\ta
+        {\\n\\t\\t\\tcolor: rgb(134, 179, 0);\\n\\t\\t\\ttext-decoration: none;\\n\\t\\t}\\n\\n\\t\\tp,\\n\\t\\tli
+        {\\n\\t\\t\\tfont-size: 16px;\\n\\t\\t}\\n\\n\\t\\t.icon-warning {\\n\\t\\t\\tcolor:
+        #dec340;\\n\\t\\t\\theight: 4rem;\\n\\t\\t\\tpadding-top: 2rem;\\n\\t\\t}\\n\\n\\t\\th1
+        {\\n\\t\\t\\tfont-size: 1.5em;\\n\\t\\t\\tmargin: 1em;\\n\\t\\t}\\n\\n\\t\\tcode
+        {\\n\\t\\t\\tfont-family: Fira, FiraCode, monospace;\\n\\t\\t}\\n\\n\\t\\t#errorInfo
+        {\\n\\t\\t\\tbackground: #333;\\n\\t\\t\\tmargin-bottom: 2rem;\\n\\t\\t\\tpadding:
+        0.5rem 1rem;\\n\\t\\t\\twidth: 40rem;\\n\\t\\t\\tborder-radius: 10px;\\n\\t\\t\\tjustify-content:
+        center;\\n\\t\\t\\tmargin: auto;\\n\\t\\t}\\n\\n\\t\\t#errorInfo summary {\\n\\t\\t\\tcursor:
+        pointer;\\n\\t\\t}\\n\\n\\t\\t#errorInfo summary > * {\\n\\t\\t\\tdisplay:
+        inline;\\n\\t\\t}\\n\\n\\t\\t@media screen and (max-width: 500px) {\\n\\t\\t\\t#errorInfo
+        {\\n\\t\\t\\t\\twidth: 50%;\\n\\t\\t\\t}\\n\\t\\t}\")}})();</script></head><body><noscript><p>JavaScriptを有効にしてください<br>Please
+        turn on your JavaScript</p></noscript><div id=\"splash\"><img id=\"splashIcon\"
+        src=\"https://cdn.transfem.social/files/f0f8e8e5-8467-4b46-8884-83c4e9093e78.webp\"><span
+        id=\"splashText\">You are Valid</span><div id=\"splashSpinner\"><svg class=\"spinner
+        bg\" viewBox=\"0 0 152 152\" xmlns=\"http://www.w3.org/2000/svg\">\n<g transform=\"matrix(1,0,0,1,12,12)\">\n<circle
+        cx=\"64\" cy=\"64\" r=\"64\" style=\"fill:none;stroke:currentColor;stroke-width:24px;\"/>\n</g>\n</svg>\n<svg
+        class=\"spinner fg\" viewBox=\"0 0 152 152\" xmlns=\"http://www.w3.org/2000/svg\">\n<g
+        transform=\"matrix(1,0,0,1,12,12)\">\n<path d=\"M128,64C128,28.654 99.346,0
+        64,0C99.346,0 128,28.654 128,64Z\" style=\"fill:none;stroke:currentColor;stroke-width:24px;\"/>\n</g>\n</svg></div></div></body></html>"
+  recorded_at: Mon, 12 May 2025 02:52:03 GMT
+- request:
+    method: post
+    uri: https://api.tumblr.com/v2/blog/indirect.tumblr.com/post
+    body:
+      encoding: UTF-8
+      string: format=markdown&quote=%40calcifer%40masto.hackers.town+%0A%0AYoung+man%2C+there%27s+no+need+to+have+RAM%0AI+said+young+man%2C+you+can+simply+program%0AI+said+young+man%2C+logic+gates+are+my+jam%0AThere%27s+no+need+for+a+CPU%0A%0AIt%27s+fun+to+program+the+FPGA%0AIt%27s+fun+to+program+the+FPGA%0AIt+has+everything%0AFor+a+Turing+machine%0AYou+can+write+out+all+your+routines%0A%0ARE%3A+Dammit+I+mentioned+FPGA+and+now+I%E2%80%99m+singing+the+initialism+to+the+tune+of+%E2%80%9CYMCA%E2%80%9D&source=%3Ca+href%3D%22https%3A%2F%2Ftransfem.social%2Fnotes%2Fa7mgctvw8cub4i6v%22%3E%40faelif%3C%2Fa%3E&type=quote
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - tumblr_client/0.8.5
+      Authorization:
+      - OAuth oauth_consumer_key="UBFEAA4nUNXARJAW0KbBMPF428yEs0PanWhGJTHv0vkAycxKhr",
+        oauth_nonce="8fe42ef192a1e0f29bf29aa43c19b381", oauth_signature="k96tfr%2BajoyUWAeCCYsbNFKPSEE%3D",
+        oauth_signature_method="HMAC-SHA1", oauth_timestamp="1747018323", oauth_token="AJx6PXa9ENs1ESns6n6RriWe24IBli4VYINEQMsY99HEBFOTJc",
+        oauth_version="1.0"
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 12 May 2025 02:52:03 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '165'
+      Connection:
+      - keep-alive
+      X-Rid:
+      - 1e89848bc4548cf1cc828c469ba258ca
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Strict-Transport-Security:
+      - max-age=31536000; preload
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"meta":{"status":201,"msg":"Created"},"response":{"id":783305485256458240,"id_string":"783305485256458240","state":"published","display_text":"Posted
+        to indirect"}}'
+  recorded_at: Mon, 12 May 2025 02:52:03 GMT
+recorded_with: VCR 6.3.1
