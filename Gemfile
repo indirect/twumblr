@@ -22,3 +22,5 @@ gem "tumblr_client", github: "indirect/tumblr_client", branch: "master"
 gem "upmark", "~> 1.0"
 
 gem "http", "~> 5.2"
+
+gem "rackup", "~> 2.2"
