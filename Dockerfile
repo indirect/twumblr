@@ -9,7 +9,7 @@ RUN gem update --system --no-document && \
 
 FROM base AS build
 
-RUN apk add build-base git
+RUN apk add build-base git yaml-dev
 COPY Gemfile* .ruby-version .
 RUN --mount=type=cache,id=bld-gem-cache,sharing=locked,target=/srv/bundle \
     bundle config path /srv/bundle && \
