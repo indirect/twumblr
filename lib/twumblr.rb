@@ -7,6 +7,16 @@ class Info < Struct
   def uploads_for(urls)
     urls.map { |u| Twumblr.upload_for(u) }
   end
+
+  def caption
+    [text, source].join(" — ")
+  end
+
+  def to_tumblr(tumblr)
+    puts "#{type}:\n#{data.inspect}"
+    return if ENV["DEBUG"]
+    tumblr.send(type, ENV["TUMBLR_BLOG_URL"], data)
+  end
 end
 
 class Twumblr
@@ -110,11 +120,6 @@ class Twumblr
       end
     end
 
-    def to_tumblr(tumblr)
-      puts "#{type}:\n#{data.inspect}"
-      return if ENV["DEBUG"]
-      tumblr.send(type, ENV["TUMBLR_BLOG_URL"], data)
-    end
   end
 
   TweetInfo = Info.new(:tweet) do
@@ -155,10 +160,6 @@ class Twumblr
       %|<a href="#{url}">#{attribution}</a>|
     end
 
-    def caption
-      [text, source].join(" — ")
-    end
-
     def photos
       tweet["media_extended"].
         select{|h| h["type"] == "image" }.
@@ -194,11 +195,6 @@ class Twumblr
       end
     end
 
-    def to_tumblr(tumblr)
-      puts "#{type}:\n#{data.inspect}"
-      return if ENV["DEBUG"]
-      tumblr.send(type, ENV["TUMBLR_BLOG_URL"], data)
-    end
   end
 
   PostInfo = Info.new(:post) do
@@ -209,7 +205,9 @@ class Twumblr
       require "ox"
       doc = Ox.load(page, mode: :generic, effort: :tolerant, smart: true)
       post = doc.locate("*/meta").map do |m|
-        [m.attributes[:name], m.attributes[:content]]
+        key = m.attributes[:name] || m.attributes[:property]
+        value = m.attributes[:content]
+        [key, value]
       end.to_h.compact.merge("url" => url)
 
       p post if ENV["DEBUG"]
@@ -228,10 +226,6 @@ class Twumblr
     def source
       name = post["og:title"] || post["misskey:user-username"]
       name ? %|<a href="#{url}">@#{name}</a>| : ""
-    end
-
-    def caption
-      [text, source].join(" — ")
     end
 
     def type
@@ -260,11 +254,60 @@ class Twumblr
     def media_urls
       [post["og:image"]]
     end
+  end
 
-    def to_tumblr(tumblr)
-      puts "#{type}:\n#{data.inspect}"
-      return if ENV["DEBUG"]
-      tumblr.send(type, ENV["TUMBLR_BLOG_URL"], data)
+  MastodonInfo = Info.new(:post) do
+    def self.from_url(url)
+      json = HTTP.get(url + ".json").parse(:json)
+      return unless json && json.dig("@context", 1, "ostatus")
+
+      new(json)
+    end
+
+    def url
+      post["url"]
+    end
+
+    def text
+      post["content"]
+    end
+
+    def source
+      profile = HTTP.get(post["attributedTo"]+".json").parse(:json)
+      name = profile["name"] << " (@" << profile["preferredUsername"] << ")"
+
+      %|<a href="#{url}">#{name}</a>|
+    end
+
+    def type
+      if post["attachment"].any?
+        :photo
+      else
+        :quote
+      end
+    end
+
+    def data
+      case type
+      when :photo
+        {
+          caption: caption,
+          data: uploads_for(media_urls),
+          link: url
+        }
+      when :quote
+        {
+          quote: text,
+          source: source,
+          format: "markdown"
+        }
+      else
+        raise "unimplemented type #{type}!"
+      end
+    end
+
+    def media_urls
+      post["attachment"].map{|a| a["url"] }
     end
   end
 
@@ -274,6 +317,9 @@ class Twumblr
 
     tweet = TweetInfo.from_url(@text) || TweetInfo.from_url(follow_redirects(@text))
     return tweet.to_tumblr(tumblr) if tweet
+
+    post = MastodonInfo.from_url(@text)
+    return post.to_tumblr(tumblr) if post
 
     post = PostInfo.from_url(@text)
     return post.to_tumblr(tumblr) if post
