@@ -23,8 +23,8 @@ FROM base
 WORKDIR /app
 RUN apk add git
 COPY --from=build /app/vendor/bundle /app/vendor/bundle
-COPY Gemfile* .ruby-version /app
+COPY Gemfile* .ruby-version config.ru /app
 COPY lib /app/lib
-COPY bin/web /app/bin/
+COPY bin/puma /app/bin/
 
-CMD ["./bin/web"]
+CMD ["bin/puma"]
