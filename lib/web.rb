@@ -39,8 +39,15 @@ class Web < Sinatra::Base
     post_url = posted?(photo_id)
     return post_url if post_url
 
-    data = params.dig(:photo, :tempfile) || Twumblr.upload_for(params[:url])
-    post = Twumblr.client.photo(ENV["TUMBLR_BLOG_URL"], {data: data})
+    if params.dig(:photo, :tempfile)
+      file = params.dig(:photo, :tempfile)
+      type = params.dig(:photo, :type)
+      filename = params.dig(:photo, :filename)
+      photo = Faraday::UploadIO.new(file, type, filename)
+    else
+      photo = Twumblr.upload_for(params[:url])
+    end
+    post = Twumblr.client.photo(ENV["TUMBLR_BLOG_URL"], {data: [photo]})
 
     post_url(post).tap do |url|
       mark_posted(params.dig(:photo, :filename), url)
