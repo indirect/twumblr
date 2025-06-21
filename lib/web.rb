@@ -31,27 +31,21 @@ class Web < Sinatra::Base
   end
 
   post "/photo" do
-    return 404 unless params["token"] == ENV['TOKEN']
+    return 404 unless params[:token] == ENV['TOKEN']
+    return 404 unless params[:url] || params.dig(:photo, :filename)
 
-    photo_id = params.dig(:photo, :filename) || params[:url]
-    return 404 unless photo_id
+    name = params[:url] || params.dig(:photo, :filename)
+    posted_url = posted?(name)
+    return posted_url if posted_url
 
-    post_url = posted?(photo_id)
-    return post_url if post_url
-
-    if params.dig(:photo, :tempfile)
-      file = params.dig(:photo, :tempfile)
-      type = params.dig(:photo, :type)
-      filename = params.dig(:photo, :filename)
-      photo = Faraday::UploadIO.new(file, type, filename)
+    if photo = params[:url]
+      Twumblr.upload_for(params[:url])
     else
-      photo = Twumblr.upload_for(params[:url])
+      photo_upload_for(params[:photo])
     end
-    post = Twumblr.client.photo(ENV["TUMBLR_BLOG_URL"], {data: [photo]})
 
-    post_url(post).tap do |url|
-      mark_posted(params.dig(:photo, :filename), url)
-    end
+    post = Twumblr.client.photo(ENV["TUMBLR_BLOG_URL"], {data: [photo]})
+    post_url(post).tap { |post_url| mark_posted(name, post_url) }
   end
 
   get "/message" do
@@ -84,6 +78,13 @@ class Web < Sinatra::Base
     puts "got post: #{post.inspect}"
     return unless post && post.has_key?("id")
     "https://" + File.join(ENV['TUMBLR_BLOG_URL'], "post", post["id"].to_s)
+  end
+
+  def photo_upload_for(photo)
+    file = params.dig(:photo, :tempfile)
+    type = params.dig(:photo, :type)
+    filename = params.dig(:photo, :filename)
+    Faraday::UploadIO.new(file, type, filename)
   end
 
 end
