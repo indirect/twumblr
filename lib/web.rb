@@ -38,11 +38,8 @@ class Web < Sinatra::Base
     posted_url = posted?(name)
     return posted_url if posted_url
 
-    if photo = params[:url]
-      Twumblr.upload_for(params[:url])
-    else
-      photo_upload_for(params[:photo])
-    end
+    photo = Twumblr.upload_for(params[:url]) if params[:url]
+    photo ||= photo_upload_for(params[:photo])
 
     post = Twumblr.client.photo(ENV["TUMBLR_BLOG_URL"], {data: [photo]})
     post_url(post).tap { |post_url| mark_posted(name, post_url) }
