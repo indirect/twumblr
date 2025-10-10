@@ -17,7 +17,7 @@ gem "ox", "~> 2.14"
 gem "puma", "~> 6.6"
 gem "redis", "~> 4.0"
 gem "reline", "~> 0.6.0"
-gem "sinatra", "~> 4.1"
+gem "sinatra", "~> 4.2"
 gem "tumblr_client", github: "indirect/tumblr_client", branch: "master"
 gem "upmark", "~> 1.0"
 
