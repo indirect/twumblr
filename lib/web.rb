@@ -59,13 +59,11 @@ class Web < Sinatra::Base
 
   def posted?(html)
     return false if ENV.has_key?("DEBUG")
-    hash = sha(html)
-    one_week_ago = Time.now - (60 * 60 * 24 * 7)
-    POSTS.key?(hash) && POSTS[hash] > one_week_ago
+    POSTS[sha(html)]
   end
 
-  def mark_posted(html)
-    POSTS[sha(html)] = Time.now
+  def mark_posted(html, url)
+    POSTS[sha(html)] = url
   end
 
   def sha(html)
