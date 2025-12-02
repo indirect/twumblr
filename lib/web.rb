@@ -1,12 +1,12 @@
 require 'sinatra/base'
 require 'honeybadger'
-require 'redis'
 require 'twumblr'
 
 class Web < Sinatra::Base
   set :port, ENV['PORT']
   set :server, 'puma'
-  set :redis, Redis.new
+
+  POSTS = {}
 
   configure :development do
     require 'pry'
@@ -59,12 +59,13 @@ class Web < Sinatra::Base
 
   def posted?(html)
     return false if ENV.has_key?("DEBUG")
-    settings.redis.get(sha(html))
+    hash = sha(html)
+    one_week_ago = Time.now - (60 * 60 * 24 * 7)
+    POSTS.key?(hash) && POSTS[hash] > one_week_ago
   end
 
-  def mark_posted(html, url)
-    one_week = 60 * 60 * 24 * 7
-    settings.redis.set(sha(html), url, ex: one_week)
+  def mark_posted(html)
+    POSTS[sha(html)] = Time.now
   end
 
   def sha(html)

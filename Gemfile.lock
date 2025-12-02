@@ -105,7 +105,6 @@ GEM
     rdoc (6.14.1)
       erb
       psych (>= 4.0.0)
-    redis (4.0.1)
     reline (0.6.0)
       io-console (~> 0.5)
     ruby2_keywords (0.0.5)
@@ -151,14 +150,13 @@ DEPENDENCIES
   ox (~> 2.14)
   pry (~> 0.14)
   puma (~> 6.6)
-  redis (~> 4.0)
   reline (~> 0.6.0)
   sinatra (~> 4.1)
   tumblr_client!
   upmark (~> 1.0)
 
 RUBY VERSION
-   ruby 3.4.4p34
+   ruby 3.4.7p58
 
 BUNDLED WITH
    2.6.9
