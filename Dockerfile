@@ -1,4 +1,4 @@
-FROM ruby:3.4.4-alpine AS base
+FROM ruby:3.4.7-alpine AS base
 
 ENV RACK_ENV="production" \
     BUNDLE_WITHOUT="development:test" \
